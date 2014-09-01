@@ -4,7 +4,12 @@ int main()
 {
 
 	CardDeck war;
+	int k;
 
-	war.displayCardAt(5);
+
+	//for (k = 0; k < 52; k++)
+	//{
+	//	war.displayCardAt(k);
+	//}
 	return 0;
 }

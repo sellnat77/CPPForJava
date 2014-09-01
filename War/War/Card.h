@@ -7,6 +7,7 @@ class Card
 private:
 	int rank;
 	string suit;
+	string face;
 
 
 public:
@@ -21,6 +22,13 @@ public:
 	{
 		rank = r;
 		suit = s;
+	}
+	
+	Card(int r, string s, string f)
+	{
+		rank = r;
+		suit = s;
+		face = f;
 	}
 
 	Card(string face, string s)
@@ -46,28 +54,34 @@ public:
 		return suit;
 	}
 
+	string getFace()
+	{
+		return face;
+	}
+
 	void setCard(int r, string s)
 	{
 		rank = r;
 		suit = s;
 	}
 
-	void setCard(string face, string s)
+	void setCard(int r, string s, string f)
 	{
-		if (face == "ace")
-		{
-			rank = 1;
-		}
-		else
-		{
-			rank = 10;
-		}
+		rank = r;
 		suit = s;
+		face = f;
 	}
 
 	void displayCard()
 	{
-		cout << "\t" << this->getValue() << " of " << this->getSuit() << "\n";
+		if (getFace().empty())
+		{
+			cout << "\t" << getValue() << " of " << getSuit() << "\n";
+		}
+		else
+		{
+			cout << "\t" << getFace() << " of " << getSuit() << "\n";
+		}
 	}
 
 
