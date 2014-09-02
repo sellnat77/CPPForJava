@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <algorithm>
+#include <ctime> 
 
 using namespace std;
 class Card

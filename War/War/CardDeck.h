@@ -2,11 +2,13 @@
 
 class CardDeck
 {
+
 private:
 	Card war[52];
 	int playerOneScore = 0;
-	int playerTwoScore=0;
+	int playerTwoScore = 0;
 	int cardsDealt = 0;
+
 public:
 
 	CardDeck()
@@ -14,6 +16,7 @@ public:
 		string suits[4] = { "clubs", "hearts", "spades", "diamonds" };
 		int j, k,count;
 		count = 0;
+		
 		//create deck of 52 cards
 		for (j = 0; j < 4; j++)
 		{
@@ -65,24 +68,35 @@ public:
 			cardsDealt = 0;
 		}
 		return war[cardsDealt].getValue();
+		
 		war[cardsDealt].setValue(0);		
 	}
 
 	int cardsLeft()
 	{
-		int size = 52;
-		return size-cardsDealt;
+		return 52-cardsDealt;
 	}
 
 	void shuffle()
 	{
 		//shuffle the deck
-		random_shuffle(&war[0], &war[52]);
+		int k,randLoc;
+		Card temp;
+
+		for (k = 0; k < 52; k++)
+		{
+			randLoc = rand() % 52;
+
+			temp         = war[k]; 
+			war[k]       = war[randLoc]; 
+			war[randLoc] = temp;
+		}		
 	}
 
 	void showAllCards()
 	{
 		int k;
+		cout << "\n";
 		for (k = 0; k < 52; k++)
 		{
 			if (war[k].getValue() != 0)
@@ -90,6 +104,7 @@ public:
 				displayCardAt(k);
 			}
 		}
+		cout << "\n";
 	}
 
 	void playWar()
@@ -100,11 +115,13 @@ public:
 		playerOneScore = 0;
 		playerTwoScore = 0;
 
+		cout << "\tDealing...prepare for WAR!\n";
+
 		for (k = 0; k < 4; k++)
 		{
 			if (playerOnesTurn)
 			{
-				cout << "\nPlayer one...\t";
+				cout << "\nPlayer one draws...\t";
 				playerOneScore += dealCard();
 				cardsDealt++;
 				system("pause");
@@ -112,7 +129,7 @@ public:
 			}
 			else
 			{
-				cout << "\nPlayer two...\t";
+				cout << "\nPlayer two draws...\t";
 				playerTwoScore += dealCard();
 				cardsDealt++;
 				system("pause");
@@ -131,36 +148,35 @@ public:
 		{
 			if (cardsDealt == 52)
 			{
-				cout << "Not enough cards! grabbing new deck...";
+				cout << "Not enough cards! grabbing new shuffled deck...";
 				CardDeck();
+				//shuffle();
 				cardsDealt = 0;
-				shuffle();
 			}
 			else
 			{
-				cout << "\n\t\t\tTIE! Play again!";
+				cout << "\n\t\t\tTIE! Play again!\n";
 				playWar();
 			}
 		}
 		else if (cardsDealt == 52)
 		{
-			cout << "Not enough cards! grabbing new deck...\n";
+			cout << "Not enough cards! grabbing new shuffled deck...\n";
 			CardDeck();
+			//shuffle();
 			cardsDealt = 0;
-			shuffle();
 		}
 		else
 		{
 			cout << "\n\t\t\tPLAYER TWO WINS!\n";
 		}
 		cout << "There are " << cardsLeft() << "cards left.\n";
-		cout << "Want to play again? 1)yes 2)no";
+		cout << "Want to play again? 1)yes 2)no ";
 		cin >> playAgain;
 
 		switch (playAgain)
 		{
 		case 1:
-			cout << "youre on";
 			playWar();
 			break;
 		default:
