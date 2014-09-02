@@ -60,6 +60,11 @@ public:
 		return face;
 	}
 
+	void setValue(int r)
+	{
+		rank = r;
+	}
+
 	void setCard(int r)
 	{
 		rank = r;
