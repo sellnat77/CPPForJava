@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <algorithm>
 
 using namespace std;
 class Card
@@ -59,6 +60,11 @@ public:
 		return face;
 	}
 
+	void setCard(int r)
+	{
+		rank = r;
+	}
+
 	void setCard(int r, string s)
 	{
 		rank = r;
@@ -83,9 +89,4 @@ public:
 			cout << "\t" << getFace() << " of " << getSuit() << "\n";
 		}
 	}
-
-
-
-
-
 };
