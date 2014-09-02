@@ -50,13 +50,11 @@ public:
 
 	void displayCardAt(int location)
 	{
-		war[location].displayCard();
-		
+		war[location].displayCard();		
 	}
 
 	int dealCard()
-	{
-		
+	{		
 		//return point vlaue on top of the deck
 		displayCardAt(cardsDealt);
 		
@@ -67,8 +65,7 @@ public:
 			cardsDealt = 0;
 		}
 		return war[cardsDealt].getValue();
-		war[cardsDealt].setValue(0);
-		
+		war[cardsDealt].setValue(0);		
 	}
 
 	int cardsLeft()
@@ -81,7 +78,6 @@ public:
 	{
 		//shuffle the deck
 		random_shuffle(&war[0], &war[52]);
-
 	}
 
 	void showAllCards()
@@ -170,8 +166,6 @@ public:
 		default:
 			break;
 		}
-
-
 	}
 
 	void mainMenu()
@@ -210,10 +204,8 @@ public:
 			mainMenu();
 			break;
 		default:
-			cout << "Thanks for playing!";
+			cout << "Thanks for playing!\n";
 			break;
-
 		}
 	}
-
 };

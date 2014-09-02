@@ -10,7 +10,6 @@ private:
 	string suit;
 	string face;
 
-
 public:
 	Card(){}
 
