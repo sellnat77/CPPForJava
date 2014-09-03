@@ -188,13 +188,13 @@ public:
 	{
 		int decision;
 
-		cout << "What would you like to do?\n\n";
-		cout << "\t1) Get a new deck\n";
-		cout << "\t2) Show the deck\n";
+		cout << "What would you like to do?\n\n" ;
+		cout << "\t1) Get a new deck\n"          ;
+		cout << "\t2) Show the deck\n"           ;
 		cout << "\t3) How many cards are left?\n";
-		cout << "\t4) Shuffle\n";
-		cout << "\t5) Play WAR!\n";
-		cout << "\t6) Exit\n";
+		cout << "\t4) Shuffle\n"                 ;
+		cout << "\t5) Play WAR!\n"               ;
+		cout << "\t6) Exit\n"                    ;
 		cin >> decision;
 		switch (decision)
 		{
