@@ -137,7 +137,7 @@ public:
 			}
 		}
 
-		cout << "\t\tPlayer one: " << playerOneScore;
+		cout << "\t\tPlayer one: "   << playerOneScore;
 		cout << "\n\t\tPlayer two: " << playerTwoScore << "\n";
 
 		if (playerOneScore > playerTwoScore)
@@ -150,7 +150,6 @@ public:
 			{
 				cout << "Not enough cards! grabbing new shuffled deck...";
 				CardDeck();
-				//shuffle();
 				cardsDealt = 0;
 			}
 			else
@@ -163,15 +162,16 @@ public:
 		{
 			cout << "Not enough cards! grabbing new shuffled deck...\n";
 			CardDeck();
-			//shuffle();
 			cardsDealt = 0;
 		}
 		else
 		{
 			cout << "\n\t\t\tPLAYER TWO WINS!\n";
 		}
+
 		cout << "There are " << cardsLeft() << "cards left.\n";
 		cout << "Want to play again? 1)yes 2)no ";
+		
 		cin >> playAgain;
 
 		switch (playAgain)
