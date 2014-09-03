@@ -11,86 +11,29 @@ private:
 	string face;
 
 public:
-	Card(){}
+	Card();
 
-	Card(string s)
-	{
-		suit = s;
-	}
+	Card(string s);
 
-	Card(int r, string s)
-	{
-		rank = r;
-		suit = s;
-	}
+	Card(int r, string s);
 	
-	Card(int r, string s, string f)
-	{
-		rank = r;
-		suit = s;
-		face = f;
-	}
+	Card(int r, string s, string f);
 
-	Card(string face, string s)
-	{
-		if (face == "ace")
-		{
-			rank = 1;
-		}
-		else
-		{
-			rank = 10;
-		}
-		suit = s;
-	}
+	Card(string face, string s);
 
-	int getValue()
-	{
-		return rank;
-	}
+	int getValue();
 
-	string getSuit()
-	{
-		return suit;
-	}
+	string getSuit();
 
-	string getFace()
-	{
-		return face;
-	}
+	string getFace();
 
-	void setValue(int r)
-	{
-		rank = r;
-	}
+	void setValue(int r);
 
-	void setCard(int r)
-	{
-		rank = r;
-	}
+	void setCard(int r);
 
-	void setCard(int r, string s)
-	{
-		rank = r;
-		suit = s;
-	}
+	void setCard(int r, string s);
 
-	void setCard(int r, string s, string f)
-	{
-		rank = r;
-		suit = s;
-		face = f;
-	}
+	void setCard(int r, string s, string f);
 
-	void displayCard()
-	{
-		if (getFace().empty())
-		{
-			cout << "\t" << getValue() << " of " << getSuit() << "\n";
-		}
-		else
-		{
-			cout << "\t" << getFace() << " of " << getSuit() << "\n";
-		}
-	}
+	void displayCard();
 };
