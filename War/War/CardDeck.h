@@ -203,22 +203,27 @@ public:
 			cardsDealt = 0;
 			mainMenu();
 			break;
+
 		case 2:
 			showAllCards();
 			mainMenu();
 			break;
+		
 		case 3:
 			cout << "There are " << cardsLeft() << " cards left.\n";
 			mainMenu();
 			break;
+		
 		case 4:
 			shuffle();
 			mainMenu();
 			break;
+		
 		case 5:
 			playWar();
 			mainMenu();
 			break;
+		
 		default:
 			cout << "Thanks for playing!\n";
 			break;
