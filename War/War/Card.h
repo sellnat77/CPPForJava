@@ -1,10 +1,10 @@
 #include <iostream>
 #include <string>
-#include <ctime> 
 
 using namespace std;
 class Card
 {
+
 private:
 	int rank;
 	string suit;
@@ -29,11 +29,11 @@ public:
 
 	void setValue(int r);
 
-	void setCard(int r);
+	void setCard (int r);
 
-	void setCard(int r, string s);
+	void setCard (int r, string s);
 
-	void setCard(int r, string s, string f);
+	void setCard (int r, string s, string f);
 
 	void displayCard();
 };

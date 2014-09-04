@@ -1,4 +1,5 @@
 #include "CardDeck.h"
+
 CardDeck::CardDeck()
 {
 	string suits[4] = { "clubs", "hearts", "spades", "diamonds" };
@@ -14,22 +15,27 @@ CardDeck::CardDeck()
 			switch (k)
 			{
 			case 1:
+				
 				war[count].setCard(1, suits[j], "ace");
 				displayCardAt(count);
 				break;
 			case 11:
+				
 				war[count].setCard(10, suits[j], "king");
 				displayCardAt(count);
 				break;
 			case 12:
+				
 				war[count].setCard(10, suits[j], "queen");
 				displayCardAt(count);
 				break;
 			case 13:
+				
 				war[count].setCard(10, suits[j], "jack");
 				displayCardAt(count);
 				break;
 			default:
+				
 				war[count].setCard(k, suits[j]);
 				displayCardAt(count);
 				break;
@@ -38,10 +44,12 @@ CardDeck::CardDeck()
 		}
 	}
 }
+
 void CardDeck::displayCardAt(int location)
 {
 	war[location].displayCard();
 }
+
 int CardDeck::dealCard()
 {
 	//return point vlaue on top of the deck

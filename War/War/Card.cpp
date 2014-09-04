@@ -1,6 +1,7 @@
 #include "Card.h"
 
 Card::Card(){}
+
 Card::Card(string s)
 {
 	suit = s;
@@ -41,29 +42,35 @@ string Card::getSuit()
 {
 	return suit;
 }
+
 string Card::getFace()
 {
 	return face;
 }
+
 void Card::setValue(int r)
 {
 	rank = r;
 }
+
 void Card::setCard(int r)
 {
 	rank = r;
 }
+
 void Card::setCard(int r, string s)
 {
 	rank = r;
 	suit = s;
 }
+
 void Card::setCard(int r, string s, string f)
 {
 	rank = r;
 	suit = s;
 	face = f;
 }
+
 void Card::displayCard()
 {
 	if (getFace().empty())
@@ -72,6 +79,6 @@ void Card::displayCard()
 	}
 	else
 	{
-		cout << "\t" << getFace() << " of " << getSuit() << "\n";
+		cout << "\t" << getFace () << " of " << getSuit() << "\n";
 	}
 }
