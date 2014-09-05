@@ -118,6 +118,8 @@ int CardDeck::dealCard()
 	
 	return war[cardsDealt].getValue();	
 }
+
+
 int CardDeck::cardsLeft()
 {
 	int k,cards;
