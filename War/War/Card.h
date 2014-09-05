@@ -14,26 +14,19 @@ public:
 	Card();
 
 	Card(string s);
-
-	Card(int r, string s);
-	
+	Card(int r, string s);	
 	Card(int r, string s, string f);
-
 	Card(string face, string s);
 
 	int getValue();
 
 	string getSuit();
-
 	string getFace();
 
-	void setValue(int r);
-
-	void setCard (int r);
-
-	void setCard (int r, string s);
-
-	void setCard (int r, string s, string f);
-
 	void displayCard();
+	void setValue(int r);
+	void setCard (int r);
+	void setCard (int r, string s);
+	void setCard (int r, string s, string f);
+	
 };

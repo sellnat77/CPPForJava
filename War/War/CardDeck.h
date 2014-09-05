@@ -2,7 +2,6 @@
 
 class CardDeck
 {
-
 private:
 	Card war[52];
 	int playerOneScore = 0;
@@ -12,17 +11,23 @@ private:
 public:
 	CardDeck();	
 
-	void displayCardAt(int location);
-
 	int dealCard     ();
-
 	int cardsLeft    ();
+	int getCardsDealt();
+	int getPlayerOneScore();
+	int getPlayerTwoScore();
 
-	void shuffle     ();
-
-	void showAllCards();
-
-	void playWar     ();
-
-	void mainMenu    ();
+	void newDeck();
+	void shuffle      ();
+	void showAllCards ();
+	void playWar      ();
+	void checkScore   ();
+	void mainMenu     ();
+	void setPlayerOneScore(int s);
+	void setPlayerTwoScore(int s);
+	void incPlayerOne(int s);
+	void incPlayerTwo(int s);
+	void setCardsDealt(int c);
+	void incCardsDealt(int c);
+	void displayCardAt(int location);
 };
