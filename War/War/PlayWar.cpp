@@ -22,7 +22,7 @@ int main()
 		switch (decision)
 		{
 		case 1:
-			warGame.newDeck();
+			warGame = CardDeck();
 			warGame.setCardsDealt(0);
 			break;
 

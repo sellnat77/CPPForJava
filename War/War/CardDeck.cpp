@@ -3,7 +3,7 @@
 
 CardDeck::CardDeck()
 {
-	/*
+	
 	string suits[4] = { "clubs", "hearts", "spades", "diamonds" };
 	int j, k, count;
 	count = 0;
@@ -45,14 +45,15 @@ CardDeck::CardDeck()
 			count++;
 		}
 	}
-	*/
+	
 }
 
 void CardDeck::newDeck()
 {
 	string suits[4] = { "clubs", "hearts", "spades", "diamonds" };
-	int j, k, count;
+	int j, k,m,count;
 	count = 0;
+	cardsDealt = 0;
 
 	//create deck of 52 cards
 	for (j = 0; j < 4; j++)
@@ -92,6 +93,7 @@ void CardDeck::newDeck()
 		}
 	}
 }
+
 void CardDeck::displayCardAt(int location)
 {
 	war[location].displayCard();
