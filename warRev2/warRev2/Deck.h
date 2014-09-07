@@ -12,6 +12,6 @@ public:
 	void shuffle();
 	void displayCardAt();
 	void showAllCards();
-	
+	//void playWar();
 	
 };

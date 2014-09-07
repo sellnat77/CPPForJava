@@ -32,9 +32,24 @@ char Card::getSuit()
 	return suit;
 }
 
+int Card::getValue()
+{
+	int value;
+
+	value = (int)(getRank());
+
+	if (value > 10)
+	{
+		value = 10;
+	}
+	return value;
+}
+
 void Card::displayCard()
 {
-	switch ((int)(rank))
+	int value;
+	value = rank;
+	switch (value)
 	{
 	case  1:
 		cout << "\tAce of " << suit << "\n";
@@ -49,7 +64,7 @@ void Card::displayCard()
 		cout << "\tKing of " << suit << "\n";
 		break;
 	default:
-		cout << "\t" << (int)(rank) << " of " << suit << "\n";
+		cout << "\t" << value << " of " << suit << "\n";
 		break;
 	}
 }

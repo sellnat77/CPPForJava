@@ -19,6 +19,8 @@ public:
 	char getRank();
 	char getSuit();
 
+	int getValue();
+
 	void displayCard();
 };
 #endif
