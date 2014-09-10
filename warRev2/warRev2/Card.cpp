@@ -1,37 +1,59 @@
 #include "Card.h""
 
+/**
+ * Default constructor sets rank and suit to '0'
+ */
 Card::Card()
 {
 	rank = '0';
 	suit = '0';
 }
 
+/**
+ * Full constructor assigns appropriate rank and suit
+ */
 Card::Card(char r, char s)
 {
 	rank = r;
 	suit = s;
 }
 
+/**
+ * Rank mutator
+ */
 void Card::setRank(char r)
 {
 	rank = r;
 }
 
+/**
+ * Suit mutator
+ */
 void Card::setSuit(char s)
 {
 	suit = s;
 }
 
+/**
+ * Rank Accessor
+ */
 char Card::getRank()
 {
 	return rank;
 }
 
+/**
+ * Suit accessor
+ */
 char Card::getSuit()
 {
 	return suit;
 }
 
+/**
+ * Returns the (int) value of any card object
+ * Value is 10 if face card
+ */
 int Card::getValue()
 {
 	int value;
@@ -45,6 +67,10 @@ int Card::getValue()
 	return value;
 }
 
+/**
+ * Displays card with appropriate rank and suit
+ * based on its associated private members
+ */
 void Card::displayCard()
 {
 	int value;
