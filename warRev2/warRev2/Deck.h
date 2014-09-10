@@ -8,10 +8,12 @@ public:
 	Deck();
 
 	Card deal();
+
 	int cardsLeft();
+
 	void shuffle();
 	void displayCardAt();
 	void showAllCards();
-	
+	void centerText(string);
 	
 };

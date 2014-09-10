@@ -1,5 +1,5 @@
 #include "Deck.h"
-
+#include <string>
 Deck::Deck()
 {	
 	char suits[4] = { 05, 03, 06, 04 };
@@ -20,16 +20,20 @@ Deck::Deck()
 
 Card Deck::deal()
 {
-	if (cardsDealt == 52)
+	Card temp;
+	int topOfDeck = 0;
+	while (allCards[topOfDeck].getValue() == 0)
 	{
-		cout << "\nNot enough cards, initializing a new deck.";
-		Deck();
+		if (topOfDeck > 52)
+		{
+			topOfDeck = 0;
+		}
+		topOfDeck++;
 	}
-	else
-	{
-		allCards[cardsDealt].displayCard();
-	}
-	return allCards[cardsDealt++];
+	temp = allCards[topOfDeck];
+	temp.displayCard();
+	allCards[topOfDeck].setRank(0);
+	return temp;	
 }
 
 int Deck::cardsLeft()
@@ -39,7 +43,7 @@ int Deck::cardsLeft()
 
 	for (k = 0; k < 52; k++)
 	{
-		if (allCards[k].getRank() != '0')
+		if (allCards[k].getRank() != 0)
 		{
 			cards++;
 		}
@@ -57,8 +61,8 @@ void Deck::shuffle()
 	{
 		randLoc = rand() % 52;
 
-		temp = allCards[k];
-		allCards[k] = allCards[randLoc];
+		temp              = allCards[k];
+		allCards[k]       = allCards[randLoc];
 		allCards[randLoc] = temp;
 	}
 }
@@ -69,10 +73,27 @@ void Deck::showAllCards()
 	cout << "\n";
 	for (k = 0; k < 52; k++)
 	{
-		if (allCards[k].getRank() != '0')
+		if (allCards[k].getValue() != 0)
 		{
-			allCards[k].displayCard();
+			if (k % 13 == 0 && k != 0)
+			{
+				cout << "\n";
+			}
+			allCards[k].displayCard();			
 		}
 	}
 	cout << "\n";
+}
+
+void Deck::centerText(string text)
+{
+	int k,length;
+
+	length = (80-text.length())/2;
+
+	for (k = 0; k < length; k++)
+	{
+		cout << " ";
+	}
+	cout << text << endl;
 }
