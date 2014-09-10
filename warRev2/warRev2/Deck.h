@@ -14,6 +14,5 @@ public:
 	void shuffle();
 	void displayCardAt();
 	void showAllCards();
-	void centerText(string);
-	
+	void centerText(string);	
 };
