@@ -2,7 +2,7 @@
 
 Deck::Deck()
 {	
-	char suits[4] = { 'c', 'h', 's', 'd' };
+	char suits[4] = { 05, 03, 06, 04 };
 	int j, k, pos;
 	cardsDealt = 0;
 	pos = 0;
