@@ -1,5 +1,10 @@
 #include "Deck.h"
 #include <string>
+
+/**
+ * Default constructor, when instantiated, resets the number of cards dealt
+ * and creates and array of 52 card objects all unique
+ */
 Deck::Deck()
 {	
 	char suits[4] = { 05, 03, 06, 04 };
@@ -18,6 +23,12 @@ Deck::Deck()
 	}
 }
 
+/**
+ * Returns the card objet on the top of the deck
+ * sets the returned card rank to 0
+ * Temp card used to display the card and store value of 
+ * top card
+ */
 Card Deck::deal()
 {
 	Card temp;
@@ -36,6 +47,9 @@ Card Deck::deal()
 	return temp;	
 }
 
+/**
+ * Returns number of cards whose value is not 0
+ */
 int Deck::cardsLeft()
 {
 	int k, cards;
@@ -51,6 +65,10 @@ int Deck::cardsLeft()
 	return cards;
 }
 
+/**
+ * Shuffles deck by swapping random card objects
+ * using temp card variable
+ */
 void Deck::shuffle()
 {
 	//shuffle the deck
@@ -67,6 +85,10 @@ void Deck::shuffle()
 	}
 }
 
+/**
+ * Displays all card objects whose values are not 0
+ * puts a space after 13 cards for easy reading
+ */
 void Deck::showAllCards()
 {
 	int k;
@@ -85,6 +107,9 @@ void Deck::showAllCards()
 	cout << "\n";
 }
 
+/**
+ * Centers given text based on width of console (80 chars)
+ */
 void Deck::centerText(string text)
 {
 	int k,length;
