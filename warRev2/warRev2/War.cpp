@@ -2,6 +2,8 @@
 
 int main()
 {
+	//Initialize the variables to keep track of progress
+	//in game
 	int k,decision,rematchChoice;
 	int cardsDealt  = 0;
 	int playerOne   = 0;
@@ -10,10 +12,13 @@ int main()
 	bool playAgain  = true;
 	bool playerTurn = true;	
 
+	//Get a new deck
 	Deck myGame = Deck();
 
+	//Loop to allow user to revisit the main menu
 	while (playAgain)
 	{
+		//Display menu
 		myGame.centerText("What would you like to do?");
 		cout << "\n\t1) Get a new deck\n";
 		cout << "\t2) Show the deck\n";
@@ -22,6 +27,9 @@ int main()
 		cout << "\t5) Play WAR!\n";
 		cout << "\t6) Exit\n";
 
+		//Checks if user input a number 
+		//value put through switch to 
+		//determine next method
 		while (!(cin >> decision))
 		{
 			cin.clear();
@@ -31,7 +39,7 @@ int main()
 
 		switch (decision)
 		{
-		case 1:
+		case 1://Grab a new deck
 			system("cls");
 			myGame.centerText("You have a new, unshuffled deck.");
 			system("pause");
@@ -40,19 +48,19 @@ int main()
 			system("cls");
 			break;
 
-		case 2:
+		case 2://Show the current deck
 			system("cls");
 			myGame.showAllCards();
 			break;
 
-		case 3:
+		case 3://Show how many cards are left
 			system("cls");
 			cout << "\t\t\tThere are " << myGame.cardsLeft() << " cards left.\n";
 			system("pause");
 			system("cls");
 			break;
 
-		case 4:
+		case 4://Shuffle the deck
 			system("cls");
 			myGame.centerText("Shuffling the deck...");
 			myGame.shuffle();
@@ -60,11 +68,15 @@ int main()
 			system("cls");
 			break;
 
-		case 5:
+		case 5://Play war
 			rematch = true;
+
+			//Allow user to rematch
 			while (rematch)
 			{
 				rematch = false;
+
+				//Deal and display cards to player and computer
 				myGame.centerText("Dealing, prepare for WAR!");
 				for (k = 0; k < 4; k++)
 				{
@@ -87,14 +99,15 @@ int main()
 					}
 				}
 				
+				//Show scores after match
 				cout << "\t\t\t\tYour Score = " << playerOne << "\n";
 				cout << "\t\t\t\tComputer   = " << computer  << "\n";
 
-				if (playerOne > computer)
+				if (playerOne > computer)//Player win
 				{
 					myGame.centerText("PLAYER ONE WINS!");
 					cout << "\n\n\n\n";
-					if (cardsDealt == 52)
+					if (cardsDealt == 52)//If the deck has been dealt, get a new shuffled one
 					{
 						myGame.centerText("Not enough cards! grabbing new shuffled deck...");
 						myGame = Deck();
@@ -102,10 +115,12 @@ int main()
 						cardsDealt = 0;
 					}
 
+					//Show how many cards are left and ask for rematch
 					cout << "\t\t\t    There are " << myGame.cardsLeft() << " cards left.\n";
 					myGame.centerText("Would you like a rematch?");
 					myGame.centerText("Enter 1 for yes and 2 for no");
 					
+					//Ensures (int) input sets rematch to true to loop through deal process again
 					while (!(cin >> rematchChoice))
 					{
 						cin.clear();
@@ -122,9 +137,9 @@ int main()
 						system("cls");
 					}
 				}
-				else if (playerOne == computer)
+				else if (playerOne == computer)//Tie game
 				{
-					if (cardsDealt == 52)
+					if (cardsDealt == 52)//If deck has been dealt, grab a shuffled one
 					{
 						myGame.centerText("TIE!");
 						cout << "\n\n\n\n";
@@ -140,11 +155,11 @@ int main()
 						rematch = true;
 					}
 				}
-				else
+				else//Computer wins
 				{
-					myGame.centerText("PLAYER TWO WINS!");
+					myGame.centerText("COMPUTER WINS!");
 					cout << "\n\n\n\n";
-					if (cardsDealt == 52)
+					if (cardsDealt == 52)//If deck has been dealt grab a shuffled one
 					{
 						myGame.centerText("Not enough cards! grabbing new shuffled deck...");
 						myGame = Deck();
@@ -152,6 +167,7 @@ int main()
 						cardsDealt = 0;
 					}
 
+					//Ensures (int) input sets rematch to true to loop through deal process again
 					cout << "\t\t\t    There are " << myGame.cardsLeft() << " cards left.\n";
 					myGame.centerText("Would you like a rematch?");
 					myGame.centerText("Enter 1 for yes and 2 for no");
@@ -169,14 +185,14 @@ int main()
 					{
 						system("cls");
 					}
-
 				}
+				//Resets the scores
 				playerOne = 0;
 				computer = 0;
 			}
 			break;
 
-		default:
+		default://Exit the program
 			myGame.centerText("Thanks for playing!");
 			playAgain = false;
 			break;
