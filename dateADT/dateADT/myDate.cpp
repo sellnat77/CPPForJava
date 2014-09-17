@@ -31,14 +31,15 @@ void myDate::incDate(int days)
 	//convert to julian
 	//add days
 	//convert new value back to gregorian
+	//if it is a valid date
 
-	tempDate = gregToJulian(month, day, year);
+	tempDate = gregToJulian(this);
 	tempDate += days;
 	julianToGreg(tempDate);
 }
 void myDate::decDate()
 {
-	//convrt to julian
+	//convert to julian
 	//subtract days
 	//convert new value back to gregorian
 }
@@ -87,22 +88,35 @@ bool myDate::checkValid(myDate date)
 	int jd;
 	myDate temp;
 
-	jd = gregToJulian(date.getMonth(), date.getDay(), date.getYear());
+	jd = gregToJulian(date);
 	temp = julianToGreg(jd);
 
-	if (temp.getMonth() != date.getMonth())
+	if (!temp.equals(date))
 	{
 		valid = false;
 		cout << "Not a valid date";
 	}
 	return valid;
 }
-int myDate::gregToJulian(int m, int d, int y)
+bool myDate::equals(myDate date)
+{
+	if (this->getDay() == date.getDay()
+		&& this->getMonth() == date.getMonth()
+		&& this->getYear() == date.getYear())
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+int myDate::gregToJulian(myDate date)
 {
 	int jd;
-	int i = y;
-	int j = m;
-	int k = d;
+	int i = date.getYear();
+	int j = date.getMonth();
+	int k = date.getDay();
 
 	jd = k - 32075 + 1461 * (i + 4800 + (j - 14) / 12) / 4 + 367 * (j - 2 - (j - 14) / 12 * 12) / 12 - 3 * ((i + 4900 + (j - 14) / 12) / 100) / 4;
 	return jd;

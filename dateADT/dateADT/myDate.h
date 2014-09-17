@@ -26,7 +26,8 @@ public:
 	int setYear(int y);
 	int getYearOffset();
 	bool checkValid(myDate date);
-	int gregToJulian(int m, int d, int y);
+	bool equals(myDate date);
+	int gregToJulian(myDate date);
 	myDate julianToGreg(int jd);
 };
 #endif
