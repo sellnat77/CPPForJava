@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 #ifndef MYDATE_H
@@ -14,7 +15,7 @@ public:
 	myDate();
 	myDate(int m, int d, int y);
 	void display();
-	void incDate();
+	void incDate(int days);
 	void decDate();
 	int daysBetween(myDate date);
 	int getMonth();
