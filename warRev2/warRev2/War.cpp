@@ -105,7 +105,7 @@ int main()
 
 				if (playerOne > computer)//Player win
 				{
-					myGame.centerText("PLAYER ONE WINS!");
+					myGame.centerText("YOU WIN!");
 					cout << "\n\n\n\n";
 					if (cardsDealt == 52)//If the deck has been dealt, get a new shuffled one
 					{
