@@ -22,5 +22,6 @@ public:
 	int getDay();
 	int getYear();
 	int getYearOffset();
+	int gregToJulian(int m, int d, int y);
 };
 #endif
