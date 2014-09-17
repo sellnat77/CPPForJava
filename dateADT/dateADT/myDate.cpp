@@ -16,7 +16,7 @@ void myDate::display()
 	string months[12] = { "January", "February", "March", "April", "May",
 						"June", "July", "August", "September", "October", 
 						"November", "December" };
-	if (checkValid())
+	if (checkValid(this))
 	{
 		cout << months[month - 1] << " " << day << ", " << year;
 	}
@@ -27,9 +27,14 @@ void myDate::display()
 }
 void myDate::incDate(int days)
 {
-	//convrt to julian
+	int tempDate;
+	//convert to julian
 	//add days
 	//convert new value back to gregorian
+
+	tempDate = gregToJulian(month, day, year);
+	tempDate += days;
+	julianToGreg(tempDate);
 }
 void myDate::decDate()
 {
@@ -56,6 +61,18 @@ int myDate::getDay()
 int myDate::getYear()
 {
 	return year;
+}
+int myDate::setMonth(int m)
+{
+	month = m;
+}
+int myDate::setDay(int d)
+{
+	day = d;
+}
+int myDate::setYear(int y)
+{
+	year = y;
 }
 int myDate::getYearOffset()
 {

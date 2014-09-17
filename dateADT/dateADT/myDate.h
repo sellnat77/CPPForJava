@@ -21,8 +21,12 @@ public:
 	int getMonth();
 	int getDay();
 	int getYear();
+	int setMonth(int m);
+	int setDay(int d);
+	int setYear(int y);
 	int getYearOffset();
+	bool checkValid(myDate date);
 	int gregToJulian(int m, int d, int y);
-	void setJulianToGreg(int jd);
+	myDate julianToGreg(int jd);
 };
 #endif
