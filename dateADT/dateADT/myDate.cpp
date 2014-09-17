@@ -36,7 +36,7 @@ int myDate::daysBetween(myDate date)
 	//find difference between both
 	//use absolute value
 	//return the absolute difference
-
+	return 0;
 }
 int myDate::getMonth()
 {
@@ -55,6 +55,7 @@ int myDate::getYearOffset()
 	//convert date into julian
 	//find julian of date jan 1st, YEAR
 	//find absolute difference between date and second start date
+	return 0;
 }
 int myDate::gregToJulian(int m, int d, int y)
 {

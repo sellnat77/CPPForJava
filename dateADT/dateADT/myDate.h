@@ -23,5 +23,6 @@ public:
 	int getYear();
 	int getYearOffset();
 	int gregToJulian(int m, int d, int y);
+	void setJulianToGreg(int jd);
 };
 #endif
