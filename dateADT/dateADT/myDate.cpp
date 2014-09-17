@@ -16,7 +16,7 @@ void myDate::display()
 	string months[12] = { "January", "February", "March", "April", "May",
 						"June", "July", "August", "September", "October", 
 						"November", "December" };
-	cout << months[month] << " " << day << ", " << year;
+	cout << months[month-1] << " " << day << ", " << year;
 }
 void myDate::incDate(int days)
 {
