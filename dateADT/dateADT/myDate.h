@@ -24,7 +24,7 @@ public:
 	void setMonth(int m);
 	void setDay(int d);
 	void setYear(int y);
-	int getYearOffset();
+	int getYearOffset(myDate date);
 	bool checkValid(myDate date);
 	bool equals(myDate date);
 	int gregToJulian(myDate date);
