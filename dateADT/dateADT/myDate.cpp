@@ -16,7 +16,8 @@ void myDate::display()
 	string months[12] = { "January", "February", "March", "April", "May",
 						"June", "July", "August", "September", "October", 
 						"November", "December" };
-	if (checkValid(this))
+	cout << months[month - 1] << " " << day << ", " << year;
+	/*if (checkValid(this))
 	{
 		cout << months[month - 1] << " " << day << ", " << year;
 	}
@@ -24,18 +25,29 @@ void myDate::display()
 	{
 		cout << "NO!";
 	}
+	*/
 }
 void myDate::incDate(int days)
 {
-	int tempDate;
+	int julian;
+	myDate comparison;
+	myDate tempDate = myDate(this->month,this->day,this->year);
 	//convert to julian
 	//add days
 	//convert new value back to gregorian
 	//if it is a valid date
 
-	tempDate = gregToJulian(this);
-	tempDate += days;
-	julianToGreg(tempDate);
+	julian = days + this->gregToJulian(tempDate);
+	this->julianToGreg(julian,month,day,year);
+	if (tempDate.getDay() == comparison.getDay())
+	{
+		cout << "\n\nValid";
+	}
+	else
+	{
+		cout << "\n\nInvalid";
+	}
+	
 }
 void myDate::decDate()
 {
@@ -63,15 +75,15 @@ int myDate::getYear()
 {
 	return year;
 }
-int myDate::setMonth(int m)
+void myDate::setMonth(int m)
 {
 	month = m;
 }
-int myDate::setDay(int d)
+void myDate::setDay(int d)
 {
 	day = d;
 }
-int myDate::setYear(int y)
+void myDate::setYear(int y)
 {
 	year = y;
 }
@@ -82,7 +94,7 @@ int myDate::getYearOffset()
 	//find absolute difference between date and second start date
 	return 0;
 }
-bool myDate::checkValid(myDate date)
+/*bool myDate::checkValid(myDate date)
 {
 	bool valid = true;
 	int jd;
@@ -98,6 +110,7 @@ bool myDate::checkValid(myDate date)
 	}
 	return valid;
 }
+*/
 bool myDate::equals(myDate date)
 {
 	if (this->getDay() == date.getDay()
@@ -121,10 +134,10 @@ int myDate::gregToJulian(myDate date)
 	jd = k - 32075 + 1461 * (i + 4800 + (j - 14) / 12) / 4 + 367 * (j - 2 - (j - 14) / 12 * 12) / 12 - 3 * ((i + 4900 + (j - 14) / 12) / 100) / 4;
 	return jd;
 }
-myDate myDate::julianToGreg(int jd)
+void myDate::julianToGreg(int jd, int &month, int &day, int &year)
 {
 	int i, j, k, l,n;
-	myDate buffer;
+	
 
 	l = jd + 68569;
 	n = 4 * l / 146097;
@@ -137,8 +150,7 @@ myDate myDate::julianToGreg(int jd)
 	j = j + 2 - 12 * l;
 	i = 100 * (n - 49) + i + l;
 
-	buffer.year = i;
-	buffer.month = j;
-	buffer.day = k;
-	return buffer;
+	year = i;
+	month = j;
+	day = k;
 }
