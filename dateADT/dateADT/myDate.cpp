@@ -40,8 +40,10 @@ void myDate::incDate(int days)
 
 	julian = days + this->gregToJulian(tempDate);
 	this->julianToGreg(julian,month,day,year);
-
-	
+	//if (!checkValid(tempDate))
+	//{
+	//	cout << "Date not valid";
+	//}	
 }
 void myDate::decDate()
 {
@@ -97,23 +99,34 @@ int myDate::getYearOffset(myDate date)
 
 	return offset;
 }
-/*bool myDate::checkValid(myDate date)
+bool myDate::checkValid(myDate date)
 {
+	//store date
+	//convert to j
+	//convert back to g
+	//compare stored value with re-converted value
+
+	int jd, month, day, year, tmonth, tday, tyear;
 	bool valid = true;
-	int jd;
-	myDate temp;
+	month = date.getMonth();
+	day = date.getDay();
+	year = date.getYear();
+	tmonth = date.getMonth();
+	tday = date.getDay();
+	tyear = date.getYear();
 
-	jd = gregToJulian(date);
-	temp = julianToGreg(jd);
-
-	if (!temp.equals(date))
+	jd = this->gregToJulian(date);
+	this->julianToGreg(jd, tmonth, tday, tyear);
+	if (month == tmonth && day == tday && year == tyear)
 	{
-		valid = false;
-		cout << "Not a valid date";
+		return true;
 	}
-	return valid;
+	else
+	{
+		return false;
+	}
 }
-*/
+
 bool myDate::equals(myDate date)
 {
 	if (this->getDay() == date.getDay()
