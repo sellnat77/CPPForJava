@@ -14,11 +14,12 @@ myDate::myDate(int m, int d, int y)
 }
 void myDate::display()
 {
+	myDate thisDate = myDate(this->month,this->day,this->year);
 	string months[12] = { "January", "February", "March", "April", "May",
 						"June", "July", "August", "September", "October", 
 						"November", "December" };
-	cout << months[month - 1] << " " << day << ", " << year;
-	/*if (checkValid(this))
+	//cout << months[month - 1] << " " << day << ", " << year;
+	if (checkValid(thisDate))
 	{
 		cout << months[month - 1] << " " << day << ", " << year;
 	}
@@ -26,7 +27,7 @@ void myDate::display()
 	{
 		cout << "NO!";
 	}
-	*/
+	
 }
 void myDate::incDate(int days)
 {
@@ -40,16 +41,30 @@ void myDate::incDate(int days)
 
 	julian = days + this->gregToJulian(tempDate);
 	this->julianToGreg(julian,month,day,year);
-	//if (!checkValid(tempDate))
-	//{
-	//	cout << "Date not valid";
-	//}	
+	if (!checkValid(tempDate))
+	{
+		cout << "Date not valid";
+	}	
 }
-void myDate::decDate()
+void myDate::decDate(int days)
 {
 	//convert to julian
 	//subtract days
 	//convert new value back to gregorian
+	int julian;
+	myDate comparison;
+	myDate tempDate = myDate(this->month, this->day, this->year);
+	//convert to julian
+	//add days
+	//convert new value back to gregorian
+	//if it is a valid date
+
+	julian = this->gregToJulian(tempDate) - days;
+	this->julianToGreg(julian, month, day, year);
+	if (!checkValid(tempDate))
+	{
+		cout << "Date not valid";
+	}
 }
 int myDate::daysBetween(myDate date)
 {
@@ -107,15 +122,15 @@ bool myDate::checkValid(myDate date)
 	//compare stored value with re-converted value
 
 	int jd, month, day, year, tmonth, tday, tyear;
-	bool valid = true;
+	bool valid = false;
 	myDate checker = date;
 
 	jd = this->gregToJulian(date);
 
-	date = this->julianToGreg(jd,date.getMonth,date.getDay,date.getYear);
+	date = this->julianToGreg(jd,date.month,date.day,date.year);
 	if (checker.equals(date))
 	{
-		valid = false;
+		valid = true;
 	}
 	return valid;
 

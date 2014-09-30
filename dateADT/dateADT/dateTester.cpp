@@ -2,39 +2,24 @@
 
 int main()
 {
-	myDate date = myDate(2,10,1992);
-	myDate anotherDate = myDate(2, 20, 1992);
-	int mo, d, ye;
-	mo = 2;
-	d = 30;
-	ye = 1992;
+	myDate valid = myDate();
+	myDate invalid = myDate(2, 20, 2014);
 
-	date.display();
-	cout << "\nJulian date:" << date.gregToJulian(date) << "\n";
-	//date.incDate(51);
-	date.display();
-	cout << "\nJulian date:" << date.gregToJulian(date) << "\n";
-	//date = myDate(1, 10, 1959);
-	cout << "\n\nYear off set from ";
-	date.display();
-	cout << "\t" << date.getYearOffset(date);
+	cout << valid.checkValid(valid);
+	cout <<	invalid.checkValid(invalid);
 
-	cout << "\n\t\tDays between ";
-	date.display();
-	cout << " and ";
-	anotherDate.display();
-
-	cout << "\n\n" << date.daysBetween(anotherDate);
-
-	anotherDate.display();
-	anotherDate.julianToGreg(anotherDate.gregToJulian(anotherDate), mo,d,ye);
-	anotherDate.display();
-
+	cout << "\n\nInitial date:\n\n";
+	invalid.display();
+	cout << "\n\nIncreasing date by 9 days:\n\n";
+	invalid.incDate(9);
+	cout << "\n\nNew date after increasing by 9:\n\n";
+	invalid.display();
+	cout << "\n\nDecreasing by 9 days:\n\n";
+	invalid.decDate(9);
+	cout << "\n\nShould be same as original date:\n\n";
+	invalid.display();
 	cout << "\n\n";
-	anotherDate = myDate(2, 29, 2014);
-	//anotherDate.incDate(1);
-	anotherDate.display();
 
-	cout << "\n\n\n\n";
+
 	return 0;
 }

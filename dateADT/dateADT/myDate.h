@@ -16,7 +16,7 @@ public:
 	myDate(int m, int d, int y);
 	void display();
 	void incDate(int days);
-	void decDate();
+	void decDate(int days);
 	int daysBetween(myDate date);
 	int getMonth();
 	int getDay();
