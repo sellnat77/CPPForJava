@@ -28,6 +28,6 @@ public:
 	bool checkValid(myDate date);
 	bool equals(myDate date);
 	int gregToJulian(myDate date);
-	void julianToGreg(int jd, int &month, int &day, int &year);
+	myDate julianToGreg(int jd, int &month, int &day, int &year);
 };
 #endif

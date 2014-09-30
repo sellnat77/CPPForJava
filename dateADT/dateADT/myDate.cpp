@@ -108,23 +108,17 @@ bool myDate::checkValid(myDate date)
 
 	int jd, month, day, year, tmonth, tday, tyear;
 	bool valid = true;
-	month = date.getMonth();
-	day = date.getDay();
-	year = date.getYear();
-	tmonth = date.getMonth();
-	tday = date.getDay();
-	tyear = date.getYear();
+	myDate checker = date;
 
 	jd = this->gregToJulian(date);
-	this->julianToGreg(jd, tmonth, tday, tyear);
-	if (month == tmonth && day == tday && year == tyear)
+
+	date = this->julianToGreg(jd,date.getMonth,date.getDay,date.getYear);
+	if (checker.equals(date))
 	{
-		return true;
+		valid = false;
 	}
-	else
-	{
-		return false;
-	}
+	return valid;
+
 }
 
 bool myDate::equals(myDate date)
@@ -150,10 +144,10 @@ int myDate::gregToJulian(myDate date)
 	jd = k - 32075 + 1461 * (i + 4800 + (j - 14) / 12) / 4 + 367 * (j - 2 - (j - 14) / 12 * 12) / 12 - 3 * ((i + 4900 + (j - 14) / 12) / 100) / 4;
 	return jd;
 }
-void myDate::julianToGreg(int jd, int &month, int &day, int &year)
+myDate myDate::julianToGreg(int jd, int &month, int &day, int &year)
 {
 	int i, j, k, l,n;
-	
+	myDate temp;
 
 	l = jd + 68569;
 	n = 4 * l / 146097;
@@ -169,4 +163,6 @@ void myDate::julianToGreg(int jd, int &month, int &day, int &year)
 	year = i;
 	month = j;
 	day = k;
+	temp = myDate(j, k, i);
+	return temp;
 }
