@@ -15,8 +15,8 @@ public:
 	myDate();
 	myDate(int m, int d, int y);
 	void display();
-	void incDate(int days);
-	void decDate(int days);
+	void incrDate(int days);
+	void decrDate(int days);
 	int daysBetween(myDate date);
 	int getMonth();
 	int getDay();
@@ -24,7 +24,7 @@ public:
 	void setMonth(int m);
 	void setDay(int d);
 	void setYear(int y);
-	int getYearOffset(myDate date);
+	int getYearOffset();
 	bool checkValid(myDate date);
 	bool equals(myDate date);
 	int gregToJulian(myDate date);

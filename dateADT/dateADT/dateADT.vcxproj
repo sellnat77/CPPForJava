@@ -81,7 +81,7 @@
     <ClInclude Include="myDate.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="dateTester.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="myDate.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

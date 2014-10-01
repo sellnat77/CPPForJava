@@ -29,7 +29,7 @@ void myDate::display()
 	}
 	
 }
-void myDate::incDate(int days)
+void myDate::incrDate(int days)
 {
 	int julian;
 	myDate comparison;
@@ -46,7 +46,7 @@ void myDate::incDate(int days)
 		cout << "Date not valid";
 	}	
 }
-void myDate::decDate(int days)
+void myDate::decrDate(int days)
 {
 	//convert to julian
 	//subtract days
@@ -102,9 +102,10 @@ void myDate::setYear(int y)
 {
 	year = y;
 }
-int myDate::getYearOffset(myDate date)
+int myDate::getYearOffset()
 {
 	int offset;
+	myDate date = myDate(month, day, year);
 	myDate janOffset = myDate(1, 1, date.getYear());
 	//convert date into julian
 	//find julian of date jan 1st, YEAR
