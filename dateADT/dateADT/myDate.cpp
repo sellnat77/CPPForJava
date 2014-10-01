@@ -25,7 +25,7 @@ void myDate::display()
 	}
 	else
 	{
-		cout << "NO!";
+		cout << "Invalid, jd = " << this->gregToJulian(thisDate);
 	}
 	
 }
@@ -75,7 +75,7 @@ int myDate::daysBetween(myDate date)
 	//use absolute value
 	//return the absolute difference
 
-	daysBtwn = abs(gregToJulian(temp) - gregToJulian(date));
+	daysBtwn = gregToJulian(date) - gregToJulian(temp);
 	return daysBtwn;
 }
 int myDate::getMonth()
