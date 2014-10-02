@@ -5,7 +5,6 @@
 **Student ID: 011529945
 */
 
-
 #include "myDate.h"
 #include <cmath>
 myDate::myDate()
@@ -18,6 +17,30 @@ myDate::myDate(int m, int d, int y)
 {
 	month = m;
 	day = d;
+	year = y;
+}
+int myDate::getMonth()
+{
+	return month;
+}
+int myDate::getDay()
+{
+	return day;
+}
+int myDate::getYear()
+{
+	return year;
+}
+void myDate::setMonth(int m)
+{
+	month = m;
+}
+void myDate::setDay(int d)
+{
+	day = d;
+}
+void myDate::setYear(int y)
+{
 	year = y;
 }
 void myDate::display()
@@ -52,12 +75,36 @@ void myDate::incrDate(int days)
 //convert new value back to gregorian
 void myDate::decrDate(int days)
 {
-
 	int julian;
 	myDate tempDate = myDate(this->month, this->day, this->year);
 
 	julian = this->gregToJulian(tempDate) - days;
 	this->julianToGreg(julian, month, day, year);
+}
+//store date
+//convert to j
+//convert back to g
+//compare stored value with re-converted value
+bool myDate::checkValid(myDate date)
+{
+	int jd;
+	bool valid = false;
+	myDate checker = date;
+
+	jd = this->gregToJulian(date);
+
+	date = this->julianToGreg(jd, date.month, date.day, date.year);
+	if (checker.equals(date))
+	{
+		valid = true;
+	}
+	return valid;
+}
+bool myDate::equals(myDate date)
+{
+	return this->getDay() == date.getDay()
+		&& this->getMonth() == date.getMonth()
+		&& this->getYear() == date.getYear();
 }
 //convert both to julian
 //find difference between both
@@ -69,30 +116,6 @@ int myDate::daysBetween(myDate date)
 
 	daysBtwn = gregToJulian(date) - gregToJulian(temp);
 	return daysBtwn;
-}
-int myDate::getMonth()
-{
-	return month;
-}
-int myDate::getDay()
-{
-	return day;
-}
-int myDate::getYear()
-{
-	return year;
-}
-void myDate::setMonth(int m)
-{
-	month = m;
-}
-void myDate::setDay(int d)
-{
-	day = d;
-}
-void myDate::setYear(int y)
-{
-	year = y;
 }
 //convert date into julian
 //find julian of date jan 1st, YEAR
@@ -106,34 +129,6 @@ int myDate::getYearOffset()
 	offset = abs(gregToJulian(date)-gregToJulian(janOffset));
 
 	return offset;
-}
-//store date
-//convert to j
-//convert back to g
-//compare stored value with re-converted value
-bool myDate::checkValid(myDate date)
-{
-
-
-	int jd;
-	bool valid = false;
-	myDate checker = date;
-
-	jd = this->gregToJulian(date);
-
-	date = this->julianToGreg(jd,date.month,date.day,date.year);
-	if (checker.equals(date))
-	{
-		valid = true;
-	}
-	return valid;
-}
-
-bool myDate::equals(myDate date)
-{
-	return this->getDay() == date.getDay()
-		&& this->getMonth() == date.getMonth()
-		&& this->getYear() == date.getYear();
 }
 int myDate::gregToJulian(myDate date)
 {
