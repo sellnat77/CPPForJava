@@ -1,3 +1,11 @@
+/*Russell Tan
+**CECS 282
+**C++ For Java Programmers
+**Date ADT Project Due Oct 2
+**Student ID: 011529945
+*/
+
+
 #include "myDate.h"
 #include <cmath>
 myDate::myDate()
@@ -18,62 +26,46 @@ void myDate::display()
 	string months[12] = { "January", "February", "March", "April", "May",
 						"June", "July", "August", "September", "October", 
 						"November", "December" };
-	//cout << months[month - 1] << " " << day << ", " << year;
-	if (checkValid(thisDate))
+	if (!checkValid(thisDate))
 	{
-		cout << months[month - 1] << " " << day << ", " << year;
+		myDate defaultDate = myDate();
+		cout << months[defaultDate.getMonth() - 1] << " " << defaultDate.getDay() << ", " << defaultDate.getYear();
 	}
 	else
 	{
-		cout << "Invalid, jd = " << this->gregToJulian(thisDate);
+		cout << months[month - 1] << " " << day << ", " << year;
 	}
-	
 }
+//convert to julian
+//add days
+//convert new value back to gregorian
 void myDate::incrDate(int days)
 {
 	int julian;
-	myDate comparison;
 	myDate tempDate = myDate(this->month,this->day,this->year);
-	//convert to julian
-	//add days
-	//convert new value back to gregorian
-	//if it is a valid date
-
+	
 	julian = days + this->gregToJulian(tempDate);
 	this->julianToGreg(julian,month,day,year);
-	if (!checkValid(tempDate))
-	{
-		cout << "Date not valid";
-	}	
 }
+//convert to julian
+//subtract days
+//convert new value back to gregorian
 void myDate::decrDate(int days)
 {
-	//convert to julian
-	//subtract days
-	//convert new value back to gregorian
+
 	int julian;
-	myDate comparison;
 	myDate tempDate = myDate(this->month, this->day, this->year);
-	//convert to julian
-	//add days
-	//convert new value back to gregorian
-	//if it is a valid date
 
 	julian = this->gregToJulian(tempDate) - days;
 	this->julianToGreg(julian, month, day, year);
-	if (!checkValid(tempDate))
-	{
-		cout << "Date not valid";
-	}
 }
+//convert both to julian
+//find difference between both
+//return the difference
 int myDate::daysBetween(myDate date)
 {
 	int daysBtwn;
 	myDate temp = myDate(month, day, year);
-	//convert both to julian
-	//find difference between both
-	//use absolute value
-	//return the absolute difference
 
 	daysBtwn = gregToJulian(date) - gregToJulian(temp);
 	return daysBtwn;
@@ -102,27 +94,28 @@ void myDate::setYear(int y)
 {
 	year = y;
 }
+//convert date into julian
+//find julian of date jan 1st, YEAR
+//find absolute difference between date and second start date
 int myDate::getYearOffset()
 {
 	int offset;
 	myDate date = myDate(month, day, year);
 	myDate janOffset = myDate(1, 1, date.getYear());
-	//convert date into julian
-	//find julian of date jan 1st, YEAR
-	//find absolute difference between date and second start date
 
 	offset = abs(gregToJulian(date)-gregToJulian(janOffset));
 
 	return offset;
 }
+//store date
+//convert to j
+//convert back to g
+//compare stored value with re-converted value
 bool myDate::checkValid(myDate date)
 {
-	//store date
-	//convert to j
-	//convert back to g
-	//compare stored value with re-converted value
 
-	int jd, month, day, year, tmonth, tday, tyear;
+
+	int jd;
 	bool valid = false;
 	myDate checker = date;
 
@@ -134,21 +127,13 @@ bool myDate::checkValid(myDate date)
 		valid = true;
 	}
 	return valid;
-
 }
 
 bool myDate::equals(myDate date)
 {
-	if (this->getDay() == date.getDay()
+	return this->getDay() == date.getDay()
 		&& this->getMonth() == date.getMonth()
-		&& this->getYear() == date.getYear())
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+		&& this->getYear() == date.getYear();
 }
 int myDate::gregToJulian(myDate date)
 {
