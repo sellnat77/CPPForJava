@@ -1,4 +1,4 @@
-C Plus Plus For Java Programmers
+C++ For Java Programmers
 ==========
 This repository contains projects for my class
 <br>There are currently only two projects:
