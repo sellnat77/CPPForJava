@@ -11,12 +11,20 @@ struct Student
 
 int main()
 {
-	Student s1;
+	Student theClass[10];
+	Student *byGrade[10];
+	Student *byName[10];
+	Student *byId[10];
+	Student *byBday[10];
+	int k;
 
-	s1.grade = 72;
-	strcpy_s(s1.name, "Torino");
-	s1.id = 1013;
-	s1.bday = myDate(10, 02, 1992);
+	for (k = 0; k < 10; k++)
+	{
+		byGrade[k] = &theClass[k];
+		byName[k] = &theClass[k];
+		byId[k] = &theClass[k];
+		byBday[k] = &theClass[k];
+	}
 
-	s1.bday.display();
+
 }
