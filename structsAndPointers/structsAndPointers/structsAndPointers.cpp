@@ -1,4 +1,5 @@
 #include "myDate.h"
+#include <string>
 
 struct Student
 {
@@ -20,6 +21,90 @@ void display(Student var)
 	var.bday.display();
 	cout << "\n\n";
 }
+
+void sortNames(Student students[])
+{
+	int j, k;
+	Student temp;
+
+	for (j = 0; j < 10; j++)
+	{
+		for (k = 0; k < 10; k++)
+		{
+			if (strcmp(students[j].name,students[k].name) < 0)
+			{
+				temp = students[j];
+				students[j] = students[k];
+				students[k] = temp;
+			}
+		}
+	}
+
+
+}
+
+void sortIds(Student students[])
+{
+	int j, k;
+	Student temp;
+
+	for (j = 0; j < 10; j++)
+	{
+		for (k = 0; k < 10; k++)
+		{
+			if (students[j].id < students[k].id)
+			{
+				temp = students[j];
+				students[j] = students[k];
+				students[k] = temp;
+			}
+		}
+	}
+
+}
+
+void sortBirthdays(Student students[])
+{
+	int j, k;
+	Student temp;
+
+	for (j = 0; j < 10; j++)
+	{
+		for (k = 0; k < 10; k++)
+		{
+			myDate bday1 = students[j].bday;
+			myDate bday2 = students[k].bday;
+			if (students[j].bday.gregToJulian(bday1) < students[k].bday.gregToJulian(bday2))
+			{
+				temp = students[j];
+				students[j] = students[k];
+				students[k] = temp;
+			}
+		}
+	}
+
+}
+
+void sortGrades(Student students[])
+{
+	int j, k;
+	Student temp;
+
+	for (j = 0; j < 10; j++)
+	{
+		for (k = 0; k < 10; k++)
+		{
+			if (students[j].grade < students[k].grade)
+			{
+				temp = students[j];
+				students[j] = students[k];
+				students[k] = temp;
+			}
+		}
+	}
+
+}
+
 
 int main()
 {
@@ -80,20 +165,48 @@ int main()
 		byName[k] = &theClass[k];
 		byId[k] = &theClass[k];
 		byBday[k] = &theClass[k];
-
-		display(*byGrade[k]);
+		
+		display(*byName[k]);
 
 	}
+
+	cout << "\n\n\n\n\n";
+
+	
+
+
+	cout << "By name\n";
+	sortNames(*byName);
+	for (k = 0; k < 10; k++)
+	{
+		display(*byName[k]);
+	}
+	
+
+	cout << "By id\n";
+	sortIds(*byId);
+	for (k = 0; k < 10; k++)
+	{
+		display(*byId[k]);
+	}
+	cout << "By grade\n";
+	sortGrades(*byGrade);
+	
+	for (k = 0; k < 10; k++)
+	{
+		display(*byGrade[k]);
+	}
+
+	cout << "By birthday\n";
+	sortBirthdays(*byBday);
+	for (k = 0; k < 10; k++)
+	{	
+		display(*byBday[k]);
+	}
+	
 	
 
 
 
 	return 0;
-}
-
-
-
-void sortNames()
-{
-	return;
 }
