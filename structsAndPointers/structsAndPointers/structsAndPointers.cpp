@@ -10,6 +10,15 @@ struct Student
 
 };
 
+void dislplayList()
+{
+	cout << "1) Display original list\n";
+	cout << "2) Display list sorted by ID\n";
+	cout << "3) Display list sorted by age, oldest to youngest\n";
+	cout << "4) Display list sorted alpabetically by name\n";
+	cout << "5) Display list sorted by grade\n";
+	cout << "6) Exit\n\n";
+}
 
 void display(Student var)
 {
@@ -113,6 +122,8 @@ int main()
 	Student *byName[10];
 	Student *byId[10];
 	Student *byBday[10];
+	bool again = false;
+	int choice = 0;
 	int k;
 
 	theClass[0].grade = 67;
@@ -149,15 +160,15 @@ int main()
 	theClass[9].id = 4242;
 
 	theClass[0].bday = myDate(10, 2, 1992);
-	theClass[1].bday = myDate(7, 16, 1992);
-	theClass[2].bday = myDate(9, 27, 1992);
-	theClass[3].bday = myDate(8, 12, 1992);
-	theClass[4].bday = myDate(5, 9, 1992);
-	theClass[5].bday = myDate(3, 24, 1992);
-	theClass[6].bday = myDate(12, 25, 1992);
-	theClass[7].bday = myDate(11, 18, 1992);
-	theClass[8].bday = myDate(2, 19, 1992);
-	theClass[9].bday = myDate(6, 1, 1992);
+	theClass[1].bday = myDate(7, 16, 1994);
+	theClass[2].bday = myDate(9, 27, 1997);
+	theClass[3].bday = myDate(8, 12, 1998);
+	theClass[4].bday = myDate(5, 9, 2005);
+	theClass[5].bday = myDate(3, 24, 2000);
+	theClass[6].bday = myDate(12, 25, 2008);
+	theClass[7].bday = myDate(11, 18, 2012);
+	theClass[8].bday = myDate(2, 19, 2014);
+	theClass[9].bday = myDate(6, 1, 2013);
 
 	for (k = 0; k < 10; k++)
 	{
@@ -165,43 +176,62 @@ int main()
 		byName[k] = &theClass[k];
 		byId[k] = &theClass[k];
 		byBday[k] = &theClass[k];
-		
-		display(*byName[k]);
-
 	}
 
-	cout << "\n\n\n\n\n";
 
 	
-
-
-	cout << "By name\n";
-	sortNames(*byName);
-	for (k = 0; k < 10; k++)
+	while (!again)
 	{
-		display(*byName[k]);
-	}
-	
+		dislplayList();
+		cout << "What would you like to do? ";
+		cin >> choice;
 
-	cout << "By id\n";
-	sortIds(*byId);
-	for (k = 0; k < 10; k++)
-	{
-		display(*byId[k]);
-	}
-	cout << "By grade\n";
-	sortGrades(*byGrade);
-	
-	for (k = 0; k < 10; k++)
-	{
-		display(*byGrade[k]);
-	}
+		switch (choice)
+		{
+		case 1:
+			for (k = 0; k < 10; k++)
+			{
+				display(theClass[k]);
+			}
+			break;
+		case 2:
+			cout << "By Id";
+			sortIds(*byId);
+			for (k = 0; k < 10; k++)
+			{
+				display(*byId[k]);
+			}
+			break;
+		case 3:
+			cout << "By birthday\n";
+			sortBirthdays(*byBday);
+			for (k = 0; k < 10; k++)
+			{
+				display(*byBday[k]);
+			}
+			break;
+		case 4:
+			cout << "By name\n";
+			sortNames(*byName);
+			for (k = 0; k < 10; k++)
+			{
+				display(*byName[k]);
+			}
+			break;
+		case 5:
+			cout << "By grade\n";
+			sortGrades(*byGrade);
 
-	cout << "By birthday\n";
-	sortBirthdays(*byBday);
-	for (k = 0; k < 10; k++)
-	{	
-		display(*byBday[k]);
+			for (k = 0; k < 10; k++)
+			{
+				display(*byGrade[k]);
+			}
+			break;
+		default:
+			again = true;
+			break;
+		}
+
 	}
 	
 	
