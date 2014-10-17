@@ -57,8 +57,6 @@ void sortNames(Student students[])
 			}
 		}
 	}
-
-
 }
 
 void sortIds(Student students[])
@@ -78,7 +76,6 @@ void sortIds(Student students[])
 			}
 		}
 	}
-
 }
 
 void sortBirthdays(Student students[])
@@ -100,9 +97,7 @@ void sortBirthdays(Student students[])
 			}
 		}
 	}
-
 }
-
 
 void sortGrades(Student students[])
 {
@@ -121,7 +116,6 @@ void sortGrades(Student students[])
 			}
 		}
 	}
-
 }
 
 int main()
@@ -188,8 +182,6 @@ int main()
 		byBday[k] = &theClass[k];
 		classCopy[k] = theClass[k];
 	}
-
-
 	
 	while (!again)
 	{
@@ -206,46 +198,32 @@ int main()
 		switch (choice)
 		{
 		case 1:
-			display(classCopy);
-			
+			display(classCopy);			
 			break;
 		case 2:
 			cout << "\nBy Id\n";
-			sortIds(*byId);
-			
-			display(*byId);
-			
+			sortIds(*byId);			
+			display(*byId);			
 			break;
 		case 3:
 			cout << "\nBy birthday\n";
 			sortBirthdays(*byBday);
-
-			display(*byBday);
-	
+			display(*byBday);	
 			break;
 		case 4:
 			cout << "\nBy name\n";
-			sortNames(*byName);
-			
-			display(*byName);
-			
+			sortNames(*byName);			
+			display(*byName);			
 			break;
 		case 5:
 			cout << "\nBy grade\n";
 			sortGrades(*byGrade);
-
 			display(*byGrade);
 			break;
 		default:
 			again = true;
 			break;
 		}
-
 	}
-	
-	
-
-
-
 	return 0;
 }
