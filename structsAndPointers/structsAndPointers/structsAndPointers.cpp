@@ -138,18 +138,6 @@ int main()
 		theClass[j].grade = 50+(rand() % (99 - 50+1));
 		theClass[j].id = 1000+(rand() % (9999 - 1000+1));
 	}
-	/*
-	theClass[0].grade = 67;
-	theClass[1].grade = 70;
-	theClass[2].grade = 98;
-	theClass[3].grade = 75;
-	theClass[4].grade = 50;
-	theClass[5].grade = 89;
-	theClass[6].grade = 80;
-	theClass[7].grade = 75;
-	theClass[8].grade = 55;
-	theClass[9].grade = 57;
-	*/
 
 	strcpy_s(theClass[0].name, "Russell");
 	strcpy_s(theClass[1].name, "Tom");
@@ -161,19 +149,6 @@ int main()
 	strcpy_s(theClass[7].name, "Bailey");
 	strcpy_s(theClass[8].name, "Sarah");
 	strcpy_s(theClass[9].name, "Tina");
-
-	/*
-	theClass[0].id = 1005;
-	theClass[1].id = 5672;
-	theClass[2].id = 8372;
-	theClass[3].id = 9275;
-	theClass[4].id = 4444;
-	theClass[5].id = 6719;
-	theClass[6].id = 2367;
-	theClass[7].id = 1025;
-	theClass[8].id = 7890;
-	theClass[9].id = 4242;
-	*/
 
 	theClass[0].bday = myDate(10, 2, 1995);
 	theClass[1].bday = myDate(7, 16, 1989);
