@@ -27,32 +27,30 @@ void dislplayList()
 	cout << "6) Exit\n\n";
 }
 
-void display(Student var[])
+void display(Student *var[])
 {
+	printf("ID\t\tName\t\t\Grade\t\tBirthday\n");
 	for (int k = 0; k < 10; k++)
 	{
-		cout << "Name: " << var[k].name << "\t\t";
-		cout << "Grade   : " << var[k].grade << "\n";
-
-		cout << "ID  : " << var[k].id << "\t\t";
-		cout << "Birthday: ";
-		var[k].bday.display();
-		cout << "\n\n";
+		cout << var[k]->id << "\t\t";
+		cout << var[k]->name<< "\t\t";
+		cout << var[k]->grade << "\t\t";
+		var[k]->bday.display();
+		cout << "\n";
 	}
 }
 
-void sortNames(Student students[])
+void sortNames(Student *students[])
 {
 	int j, k;
-	Student temp;
 
 	for (j = 0; j < 10; j++)
 	{
 		for (k = 0; k < 10; k++)
 		{
-			if (strcmp(students[j].name,students[k].name) < 0)
+			if (strcmp(students[j]->name,students[k]->name) < 0)
 			{
-				temp = students[j];
+				Student *temp = students[j];
 				students[j] = students[k];
 				students[k] = temp;
 			}
@@ -60,18 +58,17 @@ void sortNames(Student students[])
 	}
 }
 
-void sortIds(Student students[])
+void sortIds(Student *students[])
 {
 	int j, k;
-	Student temp;
 
 	for (j = 0; j < 10; j++)
 	{
 		for (k = 0; k < 10; k++)
 		{
-			if (students[j].id < students[k].id)
+			if (students[j]->id < students[k]->id)
 			{
-				temp = students[j];
+				Student *temp = students[j];
 				students[j] = students[k];
 				students[k] = temp;
 			}
@@ -79,20 +76,20 @@ void sortIds(Student students[])
 	}
 }
 
-void sortBirthdays(Student students[])
+void sortBirthdays(Student *students[])
 {
 	int j, k;
-	Student temp;
+
 
 	for (j = 0; j < 10; j++)
 	{
 		for (k = 0; k < 10; k++)
 		{
-			myDate bday1 = students[j].bday;
-			myDate bday2 = students[k].bday;
-			if (students[j].bday.gregToJulian(bday1) < students[k].bday.gregToJulian(bday2))
+			myDate bday1 = students[j]->bday;
+			myDate bday2 = students[k]->bday;
+			if (students[j]->bday.gregToJulian(bday1) < students[k]->bday.gregToJulian(bday2))
 			{
-				temp = students[j];
+				Student *temp = students[j];
 				students[j] = students[k];
 				students[k] = temp;
 			}
@@ -100,18 +97,17 @@ void sortBirthdays(Student students[])
 	}
 }
 
-void sortGrades(Student students[])
+void sortGrades(Student *students[])
 {
 	int j, k;
-	Student temp;
 
 	for (j = 0; j < 10; j++)
 	{
 		for (k = 0; k < 10; k++)
 		{
-			if (students[j].grade < students[k].grade)
+			if (students[j]->grade < students[k]->grade)
 			{
-				temp = students[j];
+				Student *temp = students[j];
 				students[j] = students[k];
 				students[k] = temp;
 			}
@@ -124,7 +120,7 @@ int main()
 	srand(time(NULL));
 
 	Student theClass[10];
-	Student classCopy[10];
+	Student *classCopy[10];
 	Student *byGrade[10];
 	Student *byName[10];
 	Student *byId[10];
@@ -167,7 +163,7 @@ int main()
 		byName[k] = &theClass[k];
 		byId[k] = &theClass[k];
 		byBday[k] = &theClass[k];
-		classCopy[k] = theClass[k];
+		classCopy[k] = &theClass[k];
 	}
 	
 	while (!again)
@@ -189,23 +185,23 @@ int main()
 			break;
 		case 2:
 			cout << "\nBy Id\n";
-			sortIds(*byId);			
-			display(*byId);			
+			sortIds(byId);			
+			display(byId);			
 			break;
 		case 3:
 			cout << "\nBy birthday\n";
-			sortBirthdays(*byBday);
-			display(*byBday);	
+			sortBirthdays(byBday);
+			display(byBday);	
 			break;
 		case 4:
 			cout << "\nBy name\n";
-			sortNames(*byName);			
-			display(*byName);			
+			sortNames(byName);			
+			display(byName);			
 			break;
 		case 5:
 			cout << "\nBy grade\n";
-			sortGrades(*byGrade);
-			display(*byGrade);
+			sortGrades(byGrade);
+			display(byGrade);
 			break;
 		default:
 			again = true;
