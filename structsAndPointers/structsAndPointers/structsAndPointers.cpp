@@ -29,7 +29,7 @@ void dislplayList()
 
 void display(Student *var[])
 {
-	printf("ID\t\tName\t\t\Grade\t\tBirthday\n");
+	printf("ID\t\tName\t\t\Grade\t\tBirthday\n\n");
 	for (int k = 0; k < 10; k++)
 	{
 		cout << var[k]->id << "\t\t";
@@ -38,6 +38,7 @@ void display(Student *var[])
 		var[k]->bday.display();
 		cout << "\n";
 	}
+	cout << "\n\n";
 }
 
 void sortNames(Student *students[])
