@@ -1,41 +1,46 @@
 #include "myDate.h"
-#include "UpDate.h"
+#include "upDate.h"
 
-UpDate::UpDate()
+upDate::upDate()
 {
 	myDate();
 }
-UpDate::UpDate(int m, int d, int y)
+upDate::upDate(int m, int d, int y)
 {
 	myDate(m, d, y);
 
 }
 
-UpDate::~UpDate()
+upDate::~upDate()
 {
 
 }
 
-void UpDate::setDate(int m, int d, int y)
+void upDate::setDate(int m, int d, int y)
 {
 	myDate(m,d,y);
 }
-int UpDate::getMonth()
+
+void upDate::display()
+{
+
+}
+int upDate::getMonth()
 {
 	return month;
 
 }
-int UpDate::getDay()
+int upDate::getDay()
 {
 	return day;
 }
-int UpDate::getYear()
+int upDate::getYear()
 {
 	return year;
 
 }
 
-string UpDate::getMonthName()
+string upDate::getMonthName()
 {
 	switch (month)
 	{
@@ -80,48 +85,48 @@ string UpDate::getMonthName()
 	}
 }
 
-UpDate UpDate::operator+(UpDate operand)
+upDate upDate::operator+(upDate operand)
 {
 
 
 }
-UpDate UpDate::operator+(int bogus)
+upDate upDate::operator+(int bogus)
 {
 
 }
-UpDate UpDate::operator++()
+upDate upDate::operator++()
 {
 
 }
-UpDate UpDate::operator-(UpDate operand)
+upDate upDate::operator-(upDate operand)
 {
 
 }
-UpDate UpDate::operator-(int bogus)
+upDate upDate::operator-(int bogus)
 {
 
 }
-UpDate UpDate::operator--()
+upDate upDate::operator--()
 {
 
 }
-UpDate UpDate::operator=(UpDate assign)
+upDate upDate::operator=(upDate assign)
 {
 
 }
-UpDate UpDate::operator>(UpDate compare)
+upDate upDate::operator>(upDate compare)
 {
 
 }
-UpDate UpDate::operator<(UpDate compare)
+upDate upDate::operator<(upDate compare)
 {
 
 }
-UpDate UpDate::operator==(UpDate compare)
+upDate upDate::operator==(upDate compare)
 {
 
 }
-UpDate UpDate::operator<<()
+ostream upDate::operator<<(upDate print)
 {
-
+	print.display();
 }
