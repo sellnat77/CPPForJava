@@ -29,5 +29,11 @@
     <ClCompile Include="upDateTester.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="testupDate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dateADT\dateADT\myDate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

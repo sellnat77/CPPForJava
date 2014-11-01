@@ -3,17 +3,21 @@
 
 upDate::upDate()
 {
+	date = new int[3];
 	myDate();
 }
 upDate::upDate(int m, int d, int y)
 {
-	myDate(m, d, y);
-
+	myDate theDate = myDate(m, d, y);
+	date = new int[3];
+	date[0] = theDate.getMonth();
+	date[1] = theDate.getDay();
+	date[2] = theDate.getYear();
 }
 
 upDate::~upDate()
 {
-
+	delete date;
 }
 
 void upDate::setDate(int m, int d, int y)
@@ -27,22 +31,27 @@ void upDate::display()
 }
 int upDate::getMonth()
 {
-	return month;
+	return date[0];
 
 }
 int upDate::getDay()
 {
-	return day;
+	return date[1];
 }
 int upDate::getYear()
 {
-	return year;
+	return date[2];
+
+}
+
+static string GetDateCount()
+{
 
 }
 
 string upDate::getMonthName()
 {
-	switch (month)
+	switch (date[0])
 	{
 	case 1:
 		return "January";
@@ -102,10 +111,10 @@ upDate upDate::operator-(upDate operand)
 {
 
 }
-upDate upDate::operator-(int bogus)
-{
+//upDate upDate::operator-(int bogus)
+//{
 
-}
+//}
 upDate upDate::operator--()
 {
 
@@ -126,7 +135,19 @@ upDate upDate::operator==(upDate compare)
 {
 
 }
-ostream upDate::operator<<(upDate print)
+ostream& operator<<(ostream& os,upDate& print)
 {
-	print.display();
+	os << print.date[0] << '/' << print.date[1] << '/' << print.date[2];
+	return os;
+}
+
+int upDate::julian()
+{
+	int jd;
+	int i = date[2];
+	int j = date[0];
+	int k = date[1];
+
+	jd = k - 32075 + 1461 * (i + 4800 + (j - 14) / 12) / 4 + 367 * (j - 2 - (j - 14) / 12 * 12) / 12 - 3 * ((i + 4900 + (j - 14) / 12) / 100) / 4;
+	return jd;
 }

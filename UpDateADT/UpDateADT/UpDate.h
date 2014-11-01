@@ -7,10 +7,7 @@ using namespace std;
 class upDate
 {
 private:
-	int month;
-	int day;
-	int year;
-
+	int *date; 
 
 public:
 	upDate();
@@ -25,18 +22,21 @@ public:
 	int getYear();
 
 	string getMonthName();
+	static string GetDateCount();
 
 	upDate operator+(upDate);
 	upDate operator+(int);
 	upDate operator++();
 	upDate operator-(upDate);
-	friend upDate operator-(myDate);
+	//upDate operator-(upDate);
 	upDate operator--();
 	upDate operator=(upDate );
 	upDate operator>(upDate );
 	upDate operator<(upDate );
 	upDate operator==(upDate );
-	&ostream operator<<(ostream,&upDate);
+	friend ostream &operator<<(ostream&,upDate&);
+
+	int julian();
 
 
 };

@@ -82,6 +82,8 @@
     <ClInclude Include="UpDate.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\dateADT\dateADT\myDate.cpp" />
+    <ClCompile Include="testupDate.cpp" />
     <ClCompile Include="UpDate.cpp" />
     <ClCompile Include="upDateTester.cpp" />
   </ItemGroup>
