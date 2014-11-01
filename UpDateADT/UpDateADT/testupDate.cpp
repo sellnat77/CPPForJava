@@ -8,6 +8,7 @@
 //
 
 #include "upDate.h"
+#include "myDate.h"
 #include <iostream>
 using namespace std;
 
@@ -24,12 +25,13 @@ int main()
 	cout << "This program is due on " << duedate;
 	cout << endl;
 
-	cout << "Right now there are " << upDate::GetDateCount() << "upDate objects\n";
+	/*cout << "Right now there are " << upDate::GetDateCount() << "upDate objects\n";
 	{
 		upDate d1, d2, d3;
 		cout << "Inside this block there are " << upDate::GetDateCount() << "upDate objects\n";
 	}
-	cout << "Outside the block there are " << upDate::GetDateCount() << "upDate objects\n";
+	*/
+	//cout << "Outside the block there are " << upDate::GetDateCount() << "upDate objects\n";
 	upDate dtemp(duedate);
 	dtemp++;
 	cout << "If you turn this assignment in on " << dtemp << " then is will be late\n";

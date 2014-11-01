@@ -22,18 +22,21 @@ public:
 	int getYear();
 
 	string getMonthName();
-	static string GetDateCount();
+	static int GetDateCount();
 
-	upDate operator+(upDate);
-	upDate operator+(int);
-	upDate operator++();
-	upDate operator-(upDate);
-	//upDate operator-(upDate);
+	friend upDate operator+(int,upDate);
+	friend upDate operator+(upDate,int);
+	friend upDate operator++(upDate);
+	upDate operator++(int);
+	friend upDate operator-(upDate,upDate);
+	friend upDate operator-(upDate);
+	friend upDate operator-(upDate,int);
+	upDate operator--(int);
 	upDate operator--();
-	upDate operator=(upDate );
-	upDate operator>(upDate );
-	upDate operator<(upDate );
-	upDate operator==(upDate );
+	upDate operator=(upDate);
+	 upDate operator>(upDate);
+	 upDate operator<(upDate);
+	 upDate operator==(upDate);
 	friend ostream &operator<<(ostream&,upDate&);
 
 	int julian();

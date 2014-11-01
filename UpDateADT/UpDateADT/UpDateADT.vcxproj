@@ -79,13 +79,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="myDate.h" />
-    <ClInclude Include="UpDate.h" />
+    <ClInclude Include="upDate.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\dateADT\dateADT\myDate.cpp" />
     <ClCompile Include="testupDate.cpp" />
     <ClCompile Include="UpDate.cpp" />
-    <ClCompile Include="upDateTester.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

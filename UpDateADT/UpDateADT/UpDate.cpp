@@ -1,5 +1,6 @@
-#include "myDate.h"
 #include "upDate.h"
+#include "myDate.h"
+
 
 upDate::upDate()
 {
@@ -15,10 +16,7 @@ upDate::upDate(int m, int d, int y)
 	date[2] = theDate.getYear();
 }
 
-upDate::~upDate()
-{
-	delete date;
-}
+
 
 void upDate::setDate(int m, int d, int y)
 {
@@ -44,9 +42,9 @@ int upDate::getYear()
 
 }
 
-static string GetDateCount()
+static int GetDateCount()
 {
-
+	return 1;
 }
 
 string upDate::getMonthName()
@@ -94,46 +92,54 @@ string upDate::getMonthName()
 	}
 }
 
-upDate upDate::operator+(upDate operand)
+upDate operator+(upDate operand)
 {
-
+	return operand;
 
 }
-upDate upDate::operator+(int bogus)
+upDate operator+(upDate temp,int bogus)
 {
-
+	return temp;
 }
-upDate upDate::operator++()
+upDate operator++(upDate temp)
 {
-
+	return temp;
 }
-upDate upDate::operator-(upDate operand)
+upDate operator++(upDate temp, int bogus)
 {
-
+	return temp;
 }
-//upDate upDate::operator-(int bogus)
-//{
-
-//}
+upDate operator-(upDate operand,upDate temp)
+{
+	return operand;
+}
+upDate operator-(upDate one)
+{
+	return one;
+}
+upDate operator-(upDate temp, int bogus)
+{
+	return temp;
+}
 upDate upDate::operator--()
 {
-
+	return *this;
 }
 upDate upDate::operator=(upDate assign)
 {
-
+	return assign;
 }
 upDate upDate::operator>(upDate compare)
 {
-
+	return compare;
 }
 upDate upDate::operator<(upDate compare)
 {
-
+	return compare;
 }
 upDate upDate::operator==(upDate compare)
 {
-
+	return compare;
 }
 ostream& operator<<(ostream& os,upDate& print)
 {
@@ -150,4 +156,8 @@ int upDate::julian()
 
 	jd = k - 32075 + 1461 * (i + 4800 + (j - 14) / 12) / 4 + 367 * (j - 2 - (j - 14) / 12 * 12) / 12 - 3 * ((i + 4900 + (j - 14) / 12) / 100) / 4;
 	return jd;
+}
+upDate::~upDate()
+{
+	delete date;
 }
