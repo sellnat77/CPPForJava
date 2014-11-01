@@ -9,9 +9,11 @@ class upDate
 private:
 	int *date; 
 
+
 public:
 	upDate();
 	upDate(int m, int d, int y);
+	upDate(upDate&);
 
 	~upDate();
 
@@ -26,17 +28,24 @@ public:
 
 	friend upDate operator+(int,upDate);
 	friend upDate operator+(upDate,int);
-	friend upDate operator++(upDate);
+	
+	
+	upDate& operator++();
 	upDate operator++(int);
-	friend upDate operator-(upDate,upDate);
-	friend upDate operator-(upDate);
+	
+	
+	friend int operator-(upDate,upDate);
+	friend upDate operator-(int,upDate);
 	friend upDate operator-(upDate,int);
+	
+	
+	upDate& operator--();
 	upDate operator--(int);
-	upDate operator--();
+	
 	upDate operator=(upDate);
-	 upDate operator>(upDate);
-	 upDate operator<(upDate);
-	 upDate operator==(upDate);
+	upDate operator>(upDate);
+	upDate operator<(upDate);
+	upDate operator==(upDate);
 	friend ostream &operator<<(ostream&,upDate&);
 
 	int julian();

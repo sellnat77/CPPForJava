@@ -30,8 +30,9 @@ int main()
 		upDate d1, d2, d3;
 		cout << "Inside this block there are " << upDate::GetDateCount() << "upDate objects\n";
 	}
+	
+	cout << "Outside the block there are " << upDate::GetDateCount() << "upDate objects\n";
 	*/
-	//cout << "Outside the block there are " << upDate::GetDateCount() << "upDate objects\n";
 	upDate dtemp(duedate);
 	dtemp++;
 	cout << "If you turn this assignment in on " << dtemp << " then is will be late\n";
@@ -41,6 +42,7 @@ int main()
 	cout << "one week earlier from due date is " << duedate - 7 << endl;
 
 	cout << "Your professor was born on " << Bday << " : ";
+
 	cout << "Doctor Gold (oh please...) is " << duedate - Bday << " days old today\n";
 
 	cout << "Today is Julian date " << duedate.julian();
