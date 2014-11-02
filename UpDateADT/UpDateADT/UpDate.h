@@ -7,7 +7,8 @@ using namespace std;
 class upDate
 {
 private:
-	int *date; 
+	int *date;
+	static int count;
 	
 	
 
