@@ -4,6 +4,7 @@
 
 upDate::upDate()
 {
+
 	date = new int[3];
 	myDate temp = myDate();
 	date[0] = temp.getMonth();
@@ -12,6 +13,7 @@ upDate::upDate()
 }
 upDate::upDate(int m, int d, int y)
 {
+
 	myDate theDate = myDate(m, d, y);
 	date = new int[3];
 	date[0] = theDate.getMonth();
@@ -20,6 +22,7 @@ upDate::upDate(int m, int d, int y)
 }
 upDate::upDate(upDate& source)
 {
+
 	myDate theDate = myDate(source.date[0], source.date[1], source.date[2]);
 	date = new int[3];
 	date[0] = theDate.getMonth();
@@ -53,7 +56,7 @@ int upDate::getYear()
 
 }
 
-static int GetDateCount()
+int upDate::GetDateCount()
 {
 	return 1;
 }
@@ -99,6 +102,7 @@ string upDate::getMonthName()
 		return "December";
 		break;
 	default:
+		return "default";
 		break;
 	}
 }
@@ -214,5 +218,7 @@ int upDate::julian()
 }
 upDate::~upDate()
 {
-	delete date;
+
+	delete[] date;
+	date = 0;
 }

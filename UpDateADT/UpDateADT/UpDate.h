@@ -8,9 +8,12 @@ class upDate
 {
 private:
 	int *date; 
+	
+	
 
 
 public:
+
 	upDate();
 	upDate(int m, int d, int y);
 	upDate(upDate&);
