@@ -37,11 +37,6 @@ public:
 	upDate& operator--();
 	upDate operator--(int);
 	
-	upDate operator=(upDate);
-	upDate operator>(upDate);
-	upDate operator<(upDate);
-	upDate operator==(upDate);
 	friend ostream &operator<<(ostream&,upDate&);
-	
 };
 #endif

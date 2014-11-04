@@ -1,11 +1,7 @@
-// testupDate.cpp
-// Author: Steven H Gold
-// Program #4 due date: 11/04/2014
-// 
-// 
-//
-// All rights and lefts reserved.
-//
+// Name: Russell Tan
+//Class: CECS 282 c++ For Java Programmers
+//ID: 011529945
+//Date:11/04/2014
 
 #include "upDate.h"
 #include "myDate.h"

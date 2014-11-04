@@ -142,22 +142,6 @@ upDate upDate::operator--(int bogus)
 	temp.julianToGreg(tDate, this->date[0], this->date[1], this->date[2]);
 	return *this;
 }
-upDate upDate::operator=(upDate assign)
-{
-	return assign;
-}
-upDate upDate::operator>(upDate compare)
-{
-	return compare;
-}
-upDate upDate::operator<(upDate compare)
-{
-	return compare;
-}
-upDate upDate::operator==(upDate compare)
-{
-	return compare;
-}
 ostream& operator<<(ostream& os,upDate& print)
 {
 	os << print.date[0] << '/' << print.date[1] << '/' << print.date[2];
