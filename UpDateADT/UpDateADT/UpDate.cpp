@@ -6,33 +6,30 @@ upDate::upDate()
 {
 	count++;
 	date = new int[3];
-	myDate temp = myDate();
-	date[0] = temp.getMonth();
-	date[1] = temp.getDay();
-	date[2] = temp.getYear();
+	date[0] = 5;
+	date[1] = 11;
+	date[2] = 1959;
 }
 upDate::upDate(int m, int d, int y)
 {
 	count++;
-	myDate theDate = myDate(m, d, y);
 	date = new int[3];
-	date[0] = theDate.getMonth();
-	date[1] = theDate.getDay();
-	date[2] = theDate.getYear();
+	date[0] = m;
+	date[1] = d;
+	date[2] = y;
 }
 upDate::upDate(upDate& source)
 {
 	count++;
-	myDate theDate = myDate(source.date[0], source.date[1], source.date[2]);
 	date = new int[3];
-	date[0] = theDate.getMonth();
-	date[1] = theDate.getDay();
-	date[2] = theDate.getYear();
+	date[0] = source.date[0];
+	date[1] = source.date[1];
+	date[2] = source.date[2];
 }
 upDate::~upDate()
 {
 	count--;
-	delete[] date;
+	delete []date;
 	date = 0;
 }
 int upDate::GetDateCount()
