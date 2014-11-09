@@ -1,40 +1,40 @@
 #include "MemoryManager.h"
-
-void MemoryManager::initializeMemoryManager(void)
+namespace MemoryManager
 {
+	const int MM_POOL_SIZE = 65536;
+	char MM_pool[MM_POOL_SIZE];
+	void initializeMemoryManager(void)
+	{
 
-}
+	}
 
-void* MemoryManager::allocate(int aSize)
-{
+	void* allocate(int aSize)
+	{
+		return ((void*)0);
+	}
 
-}
+	void deallocate(void* aPointer)
+	{
+		
+	}
 
-void MemoryManager::deallocate(void* aPointer)
-{
+	int freeRemaining(void)
+	{
+		return 0;
+	}
 
-}
+	int largestFree()
+	{
+		return 0;
+	}
 
-int MemoryManager::freeRemaining(void)
-{
+	int smallestFree(void)
+	{
+		return 0;
+	}
 
-}
+	void onOutMemory(void)
+	{
 
-int MemoryManager::largestFree()
-{
-
-}
-
-int MemoryManager::smallestFree(void)
-{
-
-}
-
-void MemoryManager::onOutMemory(void)
-{
-
-}
-void MemoryManager::onOverrunDetected(void)
-{
-
+	}
 }
