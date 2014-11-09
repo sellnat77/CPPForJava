@@ -29,7 +29,7 @@ upDate::upDate(upDate& source)
 upDate::~upDate()
 {
 	count--;
-	delete []date;
+	delete date;
 	date = 0;
 }
 int upDate::GetDateCount()
