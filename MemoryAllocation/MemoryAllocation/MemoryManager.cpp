@@ -12,12 +12,17 @@ namespace MemoryManager
 	char MM_pool[MM_POOL_SIZE];
 	void initializeMemoryManager(void)
 	{
+		/*
 		int k;
 
 		for (k = 0; k < MM_POOL_SIZE; k++)
 		{
 			MM_pool[k] = 'o';
 		}
+		*/
+		void* MM_pool;
+
+		MM_pool = new char[MM_POOL_SIZE];
 	}
 	void outOfMemory(void)
 	{
@@ -28,7 +33,7 @@ namespace MemoryManager
 	{
 		int k;
 
-		std::cout << "aSize=  " << aSize << "Free = " << freeRemaining();
+		std::cout << "aSize=  " << aSize << "\tFree = " << freeRemaining() <<"\n";
 		if (aSize > freeRemaining() || aSize < 0)
 		{
 			outOfMemory();
@@ -112,8 +117,8 @@ namespace MemoryManager
 		}
 	}
 
-	void* operator=(void* aPointer)
-	{
+	//void* operator=(void* aPointer)
+	//{
 
-	}
+	//}
 }
