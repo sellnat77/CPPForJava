@@ -43,6 +43,8 @@ namespace MemoryManager
 			MM_pool[k] = 'x';
 		}
 
+
+
 		
 		return ((void*)MM_pool);
 	}
