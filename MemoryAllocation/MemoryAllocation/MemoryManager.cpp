@@ -12,14 +12,6 @@ namespace MemoryManager
 	char MM_pool[MM_POOL_SIZE];
 	void initializeMemoryManager(void)
 	{
-		/*
-		int k;
-
-		for (k = 0; k < MM_POOL_SIZE; k++)
-		{
-			MM_pool[k] = 'o';
-		}
-		*/
 		void* MM_pool;
 
 		MM_pool = new char[MM_POOL_SIZE];
@@ -42,10 +34,7 @@ namespace MemoryManager
 		{
 			MM_pool[k] = 'x';
 		}
-
-
-
-		
+			
 		return ((void*)MM_pool);
 	}
 
@@ -57,22 +46,21 @@ namespace MemoryManager
 		for (k = 0; k < originalSize; k++)
 		{
 			MM_pool[k] = 'o';
-		}
-		
+		}		
 	}
 
 	int freeRemaining(void)
 	{
 		int k,count;
 		k = 0;
-		count = 0;
+		count = MM_POOL_SIZE;
 
 		while (k < MM_POOL_SIZE)
 		{
 
-			if (MM_pool[k] == 'o')
+			if (MM_pool[k] == 'x')
 			{
-				count++;
+				count--;
 			}
 			k++;
 		}
@@ -118,9 +106,4 @@ namespace MemoryManager
 			std::cerr << "Illegal operation: \"" << buf << "\"" << std::endl;
 		}
 	}
-
-	//void* operator=(void* aPointer)
-	//{
-
-	//}
 }
