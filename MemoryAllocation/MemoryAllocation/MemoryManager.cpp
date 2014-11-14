@@ -15,6 +15,11 @@ namespace MemoryManager
 		void* MM_pool;
 
 		MM_pool = new char[MM_POOL_SIZE];
+
+		for (int k = 0; k < MM_POOL_SIZE; k++)
+		{
+			MM_pool[k] = 'o';
+		}
 	}
 	void outOfMemory(void)
 	{
