@@ -10,16 +10,20 @@ namespace MemoryManager
 {
 	const int MM_POOL_SIZE = 65536;
 	char MM_pool[MM_POOL_SIZE];
+
 	void initializeMemoryManager(void)
 	{
-		void* MM_pool;
+		int k;
+		char* MM_pool;
 
 		MM_pool = new char[MM_POOL_SIZE];
 
-		for (int k = 0; k < MM_POOL_SIZE; k++)
+		for (k = 0; k < MM_POOL_SIZE; k++)
 		{
 			MM_pool[k] = 'o';
 		}
+
+
 	}
 	void outOfMemory(void)
 	{
@@ -28,7 +32,7 @@ namespace MemoryManager
 	}
 	void* allocate(int aSize)
 	{
-		int k;
+		int k,temp;
 
 		std::cout << "aSize=  " << aSize << "\tFree = " << freeRemaining() <<"\n";
 		if (aSize > freeRemaining() || aSize < 0)
@@ -37,21 +41,29 @@ namespace MemoryManager
 		}
 		for (k = MM_POOL_SIZE-freeRemaining(); k < aSize; k++)
 		{
-			MM_pool[k] = 'x';
-		}
-			
-		return ((void*)MM_pool);
+			MM_pool[k] = 'x';			
+		}			
+		return new void*[aSize];
 	}
 
 	void deallocate(void* aPointer)
 	{
-		int k, originalSize;
-		originalSize = sizeof(aPointer);
+		int k,count;
+		count = 0;
+		char* temp = (char*)aPointer;
 
-		for (k = 0; k < originalSize; k++)
+		for (k = MM_POOL_SIZE-freeRemaining()-sizeof(temp); k < sizeof(temp); k++)
 		{
-			MM_pool[k] = 'o';
-		}		
+			if (MM_pool[k] == 'x')
+			{
+				count++;
+				MM_pool[k] = 'o';
+			}
+		}
+
+
+		delete[] temp;
+		temp = NULL;
 	}
 
 	int freeRemaining(void)
