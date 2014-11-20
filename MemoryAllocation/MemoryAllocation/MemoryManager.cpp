@@ -51,7 +51,7 @@ namespace MemoryManager
 
 		nextFree = 6 + aSize+(MM_POOL_SIZE-freeRemaining());
 
-		MM_pool[MM_POOL_SIZE - freeRemaining() + 0] = (int)nextFree;
+		MM_pool[MM_POOL_SIZE - freeRemaining() + 0] = (char)nextFree;
 		MM_pool[MM_POOL_SIZE - freeRemaining() + count++] = (int)nextFree;
 		MM_pool[MM_POOL_SIZE - freeRemaining() + count++] = (int)aSize % 16;
 		MM_pool[MM_POOL_SIZE - freeRemaining() + count++] = (int)aSize % 8;
@@ -68,7 +68,7 @@ namespace MemoryManager
 			{
 				std::cout << "\n";
 			}
-			std::cout << MM_pool[k];
+			std::cout << &MM_pool[k];
 		}
 				
 		return new void*[aSize];
