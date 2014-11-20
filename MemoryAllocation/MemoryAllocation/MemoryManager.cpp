@@ -13,15 +13,7 @@ namespace MemoryManager
 
 	void initializeMemoryManager(void)
 	{
-		int k;
-		char* MM_pool;
-
-		MM_pool = new char[MM_POOL_SIZE];
-
-		for (k = 0; k < MM_POOL_SIZE; k++)
-		{
-			MM_pool[k] = 'o';
-		}
+		
 
 
 	}
@@ -32,38 +24,15 @@ namespace MemoryManager
 	}
 	void* allocate(int aSize)
 	{
-		int k,temp;
-
-		std::cout << "aSize=  " << aSize << "\tFree = " << freeRemaining() <<"\n";
-		if (aSize > freeRemaining() || aSize < 0)
-		{
-			outOfMemory();
-		}
-		for (k = MM_POOL_SIZE-freeRemaining(); k < aSize; k++)
-		{
-			MM_pool[k] = 'x';			
-		}			
+				
 		return new void*[aSize];
 	}
 
 	void deallocate(void* aPointer)
 	{
-		int k,count;
-		count = 0;
-		char* temp = (char*)aPointer;
-
-		for (k = MM_POOL_SIZE-freeRemaining()-sizeof(temp); k < sizeof(temp); k++)
-		{
-			if (MM_pool[k] == 'x')
-			{
-				count++;
-				MM_pool[k] = 'o';
-			}
-		}
+		
 
 
-		delete[] temp;
-		temp = NULL;
 	}
 
 	int freeRemaining(void)
@@ -72,15 +41,7 @@ namespace MemoryManager
 		k = 0;
 		count = MM_POOL_SIZE;
 
-		while (k < MM_POOL_SIZE)
-		{
-
-			if (MM_pool[k] == 'x')
-			{
-				count--;
-			}
-			k++;
-		}
+		
 		return count;
 	}
 
