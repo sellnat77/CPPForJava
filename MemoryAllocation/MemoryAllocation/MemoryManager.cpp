@@ -16,24 +16,21 @@ namespace MemoryManager
 		int k;
 		char* MM_pool = new char[MM_POOL_SIZE];
 
-		for (k = 0; k < MM_POOL_SIZE; k++)
-		{
-			MM_pool[k] = 'o';
-		}
-		MM_pool[0] = '0';
-		MM_pool[1] = '6';
-		MM_pool[2] = '0';
-		MM_pool[3] = '0';
-		MM_pool[4] = '`';
-		MM_pool[5] = '~';
+		*(unsigned short*)(void*)(MM_pool + 0) = 0;
+		*(unsigned short*)(void*)(MM_pool + 1) = 6;
+		*(unsigned short*)(void*)(MM_pool + 0) = 0;
 		for (k = 0; k < 600; k++)
 		{
 			if (k % 80 == 0)
 			{
 				std::cout << "\n";
 			}
-			std::cout << MM_pool[k];
+			//std::cout << (unsigned int)MM_pool[k];
+
+			 
 		}
+		std::cout << sizeof((unsigned short)MM_pool[0]) << "\t\t";
+		
 		std::cout<<freeRemaining();
 	}
 	void outOfMemory(void)
@@ -47,14 +44,16 @@ namespace MemoryManager
 		int nextFree;
 		int size;
 		int dataSize;
+		int remain = freeRemaining();
 		int count = 0;
 
-		nextFree = 6 + aSize+(MM_POOL_SIZE-freeRemaining());
+		nextFree = (MM_POOL_SIZE-remain);
+		std::cout << "Next free = " << nextFree;
 
-		MM_pool[MM_POOL_SIZE - freeRemaining() + 0] = (char)nextFree;
-		MM_pool[MM_POOL_SIZE - freeRemaining() + count++] = (int)nextFree;
-		MM_pool[MM_POOL_SIZE - freeRemaining() + count++] = (int)aSize % 16;
-		MM_pool[MM_POOL_SIZE - freeRemaining() + count++] = (int)aSize % 8;
+		MM_pool[MM_POOL_SIZE - remain + count++] = nextFree*1.0/16;
+		MM_pool[MM_POOL_SIZE - remain + count++] = nextFree;
+		MM_pool[MM_POOL_SIZE - remain + count++] = aSize % 16;
+		MM_pool[MM_POOL_SIZE - remain + count++] = aSize % 8;
 		for (int k = 0; k < aSize; k++)
 		{
 			MM_pool[MM_POOL_SIZE - freeRemaining() + count++] = 'x';
@@ -68,7 +67,7 @@ namespace MemoryManager
 			{
 				std::cout << "\n";
 			}
-			std::cout << &MM_pool[k];
+			std::cout << MM_pool[k];
 		}
 				
 		return new void*[aSize];
@@ -86,17 +85,15 @@ namespace MemoryManager
 		int k,count;
 		k = 0;
 		count = 0;
+		
 
 		for (k = 0; k < MM_POOL_SIZE; k++)
 		{
-			if (MM_pool[k] == (char)'o')
+			if (MM_pool[k] == (char)('o'))
 			{
-				std::cout << "hit";
 				count++;
 			}
 		}
-
-		
 		return MM_POOL_SIZE-count;
 	}
 
