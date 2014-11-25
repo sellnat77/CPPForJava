@@ -8,7 +8,7 @@
 
 namespace MemoryManager
 {
-	const int MM_POOL_SIZE = 65536;
+	const int MM_POOL_SIZE = 300; //65536
 	char* MM_pool = new char[MM_POOL_SIZE];
 
 	void initializeMemoryManager(void)
