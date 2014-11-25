@@ -16,7 +16,7 @@ int main(void)
 	char* string_pointer;
 
 	std::cout << "Free memory = " << freeRemaining() << std::endl;
-
+	/*
 	int_pointer = (long*)allocate(sizeof(long)); //4
 
 	std::cout << "Free memory = " << freeRemaining() << std::endl;
@@ -38,6 +38,7 @@ int main(void)
 
 	deallocate(string_pointer);
 	std::cout << "Free memory = " << freeRemaining() << std::endl;
+	*/
 
 }
 /*
