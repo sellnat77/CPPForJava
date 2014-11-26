@@ -8,7 +8,7 @@
 
 namespace MemoryManager
 {
-	const int MM_POOL_SIZE = 300; //65536
+	const int MM_POOL_SIZE = 65536; //65536
 	char* MM_pool = new char[MM_POOL_SIZE];
 
 	void initializeMemoryManager(void)
@@ -20,21 +20,28 @@ namespace MemoryManager
 			MM_pool[k] = NULL;
 			//std::cout << (unsigned short)MM_pool[k];
 		}
-		*(unsigned short*)(void*)(MM_pool + 0) = (unsigned short)6;//Total used
+		//*(unsigned short*)(void*)(MM_pool + 0) = (unsigned short)6;//Total used
+		
+		
+		*(unsigned short*)(void*)(MM_pool + 0) = 261;//Total used
+		std::cout << "Value of 261 = " << (unsigned short)(MM_pool[0]) << "\n";
+
+		/*
 		*(unsigned short*)(void*)(MM_pool + 1) = (unsigned short)6;//Next free
 		*(unsigned short*)(void*)(MM_pool + 2) = (unsigned short)0;//Prev free
 		*(unsigned short*)(void*)(MM_pool + 3) = (unsigned short)10;//Total used
 		*(unsigned short*)(void*)(MM_pool + 4) = (unsigned short)16;//Next free
 		*(unsigned short*)(void*)(MM_pool + 5) = (unsigned short)5;//Prev free
-		*(unsigned short*)(void*)(MM_pool + 8) = (unsigned short)261;//Total used
-		*(unsigned short*)(void*)(MM_pool + 9) = (unsigned short)267;//Next free       
+		*(unsigned short*)(void*)(MM_pool + 8) = (unsigned short)10;//Total used
+		*(unsigned short*)(void*)(MM_pool + 9) = (unsigned short)28;//Next free       
 		*(unsigned short*)(void*)(MM_pool + 10) = (unsigned short)11;//Prev free
+		*/
 
 		//for (k = 0; k < MM_POOL_SIZE; k++)
 		//{
 		//	std::cout << (unsigned short)MM_pool[k];
 		//}
-		std::cout << "Value of 6 = " << (unsigned short)MM_pool[1];
+		//std::cout << "Value of 6 = " << (unsigned short)MM_pool[1];
 		
 	}
 	void outOfMemory(void)
@@ -44,8 +51,17 @@ namespace MemoryManager
 	}
 	void* allocate(int aSize)
 	{
+		void* startOfAllocated = NULL;
+		//int addr;
 
-		return NULL;
+		//*(unsigned short*)(void*)(MM_pool + addr) = (unsigned short)(6+aSize);//Total used
+		//*(unsigned short*)(void*)(MM_pool + addr+1) = (unsigned short)36;//Next free       
+		//*(unsigned short*)(void*)(MM_pool + addr+2) = (unsigned short)11;//Prev free
+
+
+
+
+		return startOfAllocated;
 	}
 
 	void deallocate(void* aPointer)
