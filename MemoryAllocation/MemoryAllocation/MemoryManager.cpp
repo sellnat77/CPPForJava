@@ -14,34 +14,38 @@ namespace MemoryManager
 	void initializeMemoryManager(void)
 	{
 		int k;
-		//char* pool = new char[MM_POOL_SIZE];
+		char* MM_pool = new char[MM_POOL_SIZE];
 		for (k = 0; k < MM_POOL_SIZE; k++)
 		{
-			MM_pool[k] = NULL;
-			//std::cout << (unsigned short)MM_pool[k];
+			MM_pool[k] = 'o';
+			//std::cout << *(unsigned short*)MM_pool+k;
 		}
-		//*(unsigned short*)(void*)(MM_pool + 0) = (unsigned short)6;//Total used
+
+
+
+		
+		*(unsigned short*)(void*)(MM_pool + 0) = 6;//Total used
 		
 		
-		*(unsigned short*)(void*)(MM_pool + 0) = 261;//Total used
-		std::cout << "Value of 261 = " << (unsigned short)(MM_pool[0]) << "\n";
+		//*(unsigned short*)(void*)(MM_pool + 0) = 261;//Total used
+		//std::cout << "Value of 261 = " << *(unsigned short*)(MM_pool+0) << "\n";
 
-		/*
-		*(unsigned short*)(void*)(MM_pool + 1) = (unsigned short)6;//Next free
-		*(unsigned short*)(void*)(MM_pool + 2) = (unsigned short)0;//Prev free
-		*(unsigned short*)(void*)(MM_pool + 3) = (unsigned short)10;//Total used
-		*(unsigned short*)(void*)(MM_pool + 4) = (unsigned short)16;//Next free
-		*(unsigned short*)(void*)(MM_pool + 5) = (unsigned short)5;//Prev free
-		*(unsigned short*)(void*)(MM_pool + 8) = (unsigned short)10;//Total used
-		*(unsigned short*)(void*)(MM_pool + 9) = (unsigned short)28;//Next free       
-		*(unsigned short*)(void*)(MM_pool + 10) = (unsigned short)11;//Prev free
-		*/
+		
+		*(unsigned short*)(void*)(MM_pool + 1) = 6;//Next free
+		*(unsigned short*)(void*)(MM_pool + 2) = 0;//Prev free
+		*(unsigned short*)(void*)(MM_pool + 3) = 10;//Total used
+		*(unsigned short*)(void*)(MM_pool + 4) = 16;//Next free
+		*(unsigned short*)(void*)(MM_pool + 5) = 5;//Prev free
+		*(unsigned short*)(void*)(MM_pool + 8) = 10;//Total used
+		*(unsigned short*)(void*)(MM_pool + 9) = 28;//Next free       
+		*(unsigned short*)(void*)(MM_pool + 10) = 11;//Prev free
+		
 
-		//for (k = 0; k < MM_POOL_SIZE; k++)
-		//{
-		//	std::cout << (unsigned short)MM_pool[k];
-		//}
-		//std::cout << "Value of 6 = " << (unsigned short)MM_pool[1];
+		for (k = 0; k < 11; k++)
+		{
+			std::cout << "MM_pool[" << k << "] = " << *(unsigned short*)(MM_pool+k) << "\n";
+		}
+		std::cout << "Value of 6 = " << *(unsigned short*)(MM_pool+1);
 		
 	}
 	void outOfMemory(void)
@@ -74,23 +78,23 @@ namespace MemoryManager
 	int freeRemaining(void)
 	{
 		int position;
-		unsigned short used = (unsigned short)MM_pool[0];
-		unsigned short next = (unsigned short)MM_pool[1];
-		unsigned short prev = (unsigned short)MM_pool[2];
+		unsigned short used = *(unsigned short*)MM_pool[0];
+		unsigned short next = *(unsigned short*)MM_pool[1];
+		unsigned short prev = *(unsigned short*)MM_pool[2];
 		unsigned short count = used;
 		int k = 0;
 
 		std::cout << "\n\n\n\t\tValue of 6 = " << next << "\n\n\n\n";
 
-		//for (k = 0; k < MM_POOL_SIZE; k++)
-		//{
-		//	std::cout << (unsigned short)MM_pool[k];
+		for (k = 0; k < MM_POOL_SIZE; k++)
+		{
+			std::cout << *(unsigned short*)(MM_pool+k);
 			
-		//}
+		}
 		k = 0;
 
-		std::cout << "mm at 8 = " << (unsigned short)MM_pool[8];
-		std::cout << "mm at 9 = " << (unsigned short)MM_pool[9];
+		std::cout << "mm at 8 = " << *(unsigned short*)MM_pool[8];
+		std::cout << "mm at 9 = " << *(unsigned short*)MM_pool[9];
 
 		while (k < MM_POOL_SIZE)
 		{
@@ -101,8 +105,8 @@ namespace MemoryManager
 			std::cout << "\nNext: " << next;
 			k += next;
 			
-			used = (unsigned short)MM_pool[count / 2];
-			next = (unsigned short)MM_pool[((int)count / 2) + 1];
+			used = *(unsigned short*)MM_pool[count / 2];
+			next = *(unsigned short*)MM_pool[((int)count / 2) + 1];
 			count += used;
 			std::cout << "\nK: " << k;
 			std::cout << "\nUSE: " << used;

@@ -12,8 +12,8 @@ int main(void)
 
 	initializeMemoryManager();
 	
-	long* int_pointer;
-	char* string_pointer;
+	//long* int_pointer;
+	//char* string_pointer;
 
 	//std::cout << "Free memory = " << freeRemaining() << std::endl;
 	/*
