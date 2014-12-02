@@ -18,11 +18,11 @@ int main(void)
 	//std::cout << "Free memory = " << freeRemaining() << std::endl;
 	//std::cout << sizeof(long);
 	
-	int_pointer = (long*)allocate(sizeof(long)); //4
+	//int_pointer = (long*)allocate(sizeof(long)); //4
 
 	std::cout << "Free memory = " << freeRemaining() << std::endl;
 	
-	string_pointer = (char*)allocate(255); //255
+	//string_pointer = (char*)allocate(255); //255
 
 	std::cout << "Free memory = " << freeRemaining() << std::endl;
 	/*
