@@ -38,8 +38,8 @@ namespace MemoryManager
 		*(unsigned short*)(void*)(MM_pool + 9) = 26;//Next free       
 		*(unsigned short*)(void*)(MM_pool + 10) = 11;//Prev free
 
-		*(unsigned short*)(void*)(MM_pool + 13) = 12;//Total used
-		*(unsigned short*)(void*)(MM_pool + 14) = 38;//Next free       
+		*(unsigned short*)(void*)(MM_pool + 13) = 14;//Total used
+		*(unsigned short*)(void*)(MM_pool + 14) = 40;//Next free       
 		*(unsigned short*)(void*)(MM_pool + 15) = 21;//Prev free
 		
 		
