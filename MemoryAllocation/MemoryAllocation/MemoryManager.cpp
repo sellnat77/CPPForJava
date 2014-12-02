@@ -28,12 +28,12 @@ namespace MemoryManager
 		*(unsigned short*)(void*)(MM_pool + 1) = 6;//Next free
 		*(unsigned short*)(void*)(MM_pool + 2) = 0;//Prev free
 		std::cout << "Value of 6 = " << (unsigned short)(MM_pool[0]) << "\n";
-		
+		/*
 		*(unsigned short*)(void*)(MM_pool + 3) = 10;//Total used
 		*(unsigned short*)(void*)(MM_pool + 4) = 16;//Next free
 		*(unsigned short*)(void*)(MM_pool + 5) = 5;//Prev free
-		
-		
+		*/
+		/*
 		*(unsigned short*)(void*)(MM_pool + 8) = 10;//Total used
 		*(unsigned short*)(void*)(MM_pool + 9) = 26;//Next free       
 		*(unsigned short*)(void*)(MM_pool + 10) = 11;//Prev free
@@ -41,7 +41,7 @@ namespace MemoryManager
 		*(unsigned short*)(void*)(MM_pool + 13) = 14;//Total used
 		*(unsigned short*)(void*)(MM_pool + 14) = 40;//Next free       
 		*(unsigned short*)(void*)(MM_pool + 15) = 21;//Prev free
-		
+		*/
 		
 		//for (k = 0; k < 11; k++)
 		//{
@@ -62,7 +62,28 @@ namespace MemoryManager
 		unsigned short nextFree;
 		unsigned short prevFree;
 		unsigned short nextOpen;
+		unsigned short temp;
 		int k;
+
+		nextOpen = (unsigned short)((int)(1.0*(abs(MM_POOL_SIZE - freeRemaining())) / 2));
+		totalUsed = (unsigned short)(aSize + 6);
+		std::cout << "USING " << (unsigned short)totalUsed << "\n\n\n";
+		//std::cout << "Being stored at " << nextOpen;
+		nextFree = (unsigned short)(totalUsed+(abs(MM_POOL_SIZE - freeRemaining())));
+		prevFree = (unsigned short)((abs(MM_POOL_SIZE - freeRemaining()) - 1));
+
+		*(unsigned short*)(void*)(MM_pool+nextOpen) = totalUsed;
+		temp = *(unsigned short*)(MM_pool + nextOpen);
+		//std::cout << "\n\n\n\n\t" << temp;
+		*(unsigned short*)(void*)(MM_pool + nextOpen+1) = nextFree;
+		*(unsigned short*)(void*)(MM_pool + nextOpen+2) = prevFree;
+		startOfAllocated = (MM_pool + nextOpen + 3);
+
+		
+		//std::cout << "MMPool[" << 8 << "] = " << temp << "\n";
+
+
+		/*
 
 		totalUsed = (unsigned short)(aSize+6);
 		nextOpen = totalUsed / 2;
@@ -97,7 +118,7 @@ namespace MemoryManager
 		}
 
 
-
+		*/
 
 		return startOfAllocated;
 	}
@@ -113,9 +134,9 @@ namespace MemoryManager
 	{
 		int position = 0;
 		int k = 0;
-		unsigned short used = (unsigned short)(MM_pool[position]);
-		unsigned short next = (unsigned short)MM_pool[position+1];
-		unsigned short prev = (unsigned short)MM_pool[position+2];
+		unsigned short used = (unsigned short)(MM_pool+position);
+		unsigned short next = (unsigned short)(MM_pool+(position+1));
+		unsigned short prev = (unsigned short)(MM_pool+(position+2));
 		unsigned short count = used;
 		//std::cout << "\n\nStart counting\n";
 		//std::cout << "\nK: " << k;
@@ -158,7 +179,7 @@ namespace MemoryManager
 			}			
 			
 		}
-		std::cout << "Used = " << count << "\n";
+		std::cout << "Used = " << abs(MM_POOL_SIZE-MM_POOL_SIZE-count) << "\n";
 		return MM_POOL_SIZE-count;
 	}
 
