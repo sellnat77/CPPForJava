@@ -15,16 +15,17 @@ int main(void)
 	long* int_pointer;
 	char* string_pointer;
 
-	std::cout << "Free memory = " << freeRemaining() << std::endl;
-	/*
+	//std::cout << "Free memory = " << freeRemaining() << std::endl;
+	//std::cout << sizeof(long);
+	
 	int_pointer = (long*)allocate(sizeof(long)); //4
 
 	std::cout << "Free memory = " << freeRemaining() << std::endl;
-
+	
 	string_pointer = (char*)allocate(255); //255
 
 	std::cout << "Free memory = " << freeRemaining() << std::endl;
-
+	/*
 	*int_pointer = 0xDEADBEEF;//too big
 
 	std::cout << "Free memory = " << freeRemaining() << std::endl;

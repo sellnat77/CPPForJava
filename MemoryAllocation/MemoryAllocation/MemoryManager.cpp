@@ -28,13 +28,13 @@ namespace MemoryManager
 		
 		
 		//*(unsigned short*)(void*)(MM_pool + 0) = 261;//Total used
-		std::cout << "Value of 6 = " << *(unsigned short*)(MM_pool+0) << "\n";
+		
 
 		*(unsigned short*)(void*)(MM_pool + 0) = 6;//Total used	
 		*(unsigned short*)(void*)(MM_pool + 1) = 6;//Next free
 		*(unsigned short*)(void*)(MM_pool + 2) = 0;//Prev free
-		
-		
+		std::cout << "Value of 6 = " << (unsigned short)(MM_pool[0]) << "\n";
+		/*
 		*(unsigned short*)(void*)(MM_pool + 3) = 10;//Total used
 		*(unsigned short*)(void*)(MM_pool + 4) = 16;//Next free
 		*(unsigned short*)(void*)(MM_pool + 5) = 5;//Prev free
@@ -43,7 +43,7 @@ namespace MemoryManager
 		*(unsigned short*)(void*)(MM_pool + 8) = 10;//Total used
 		*(unsigned short*)(void*)(MM_pool + 9) = 28;//Next free       
 		*(unsigned short*)(void*)(MM_pool + 10) = 11;//Prev free
-		
+		*/
 		
 		for (k = 0; k < 11; k++)
 		{
@@ -60,11 +60,42 @@ namespace MemoryManager
 	void* allocate(int aSize)
 	{
 		void* startOfAllocated = NULL;
-		//int addr;
+		unsigned short totalUsed;
+		unsigned short nextFree;
+		unsigned short prevFree;
+		unsigned short nextOpen = MM_POOL_SIZE - freeRemaining()+1;
+		int k;
 
-		//*(unsigned short*)(void*)(MM_pool + addr) = (unsigned short)(6+aSize);//Total used
-		//*(unsigned short*)(void*)(MM_pool + addr+1) = (unsigned short)36;//Next free       
-		//*(unsigned short*)(void*)(MM_pool + addr+2) = (unsigned short)11;//Prev free
+		totalUsed = (unsigned short)(aSize+6);
+		std::cout << "\nValue of 10 = " << totalUsed << "\n\n";
+		nextFree = (unsigned short)((MM_POOL_SIZE - freeRemaining()) + totalUsed);
+		std::cout << "\nValue of 16 = " << nextFree << "\n\n";
+		prevFree = (unsigned short)(MM_POOL_SIZE - freeRemaining()-1);
+		std::cout << "\nValue of 5 = " << prevFree << "\n\n";
+
+
+		std::cout << "\nnext open = " << nextOpen<<"\n\n";
+		*(unsigned short*)(void*)(MM_pool + nextOpen) = totalUsed;
+		*(unsigned short*)(void*)(MM_pool + (nextOpen + 1)) = nextFree;
+		*(unsigned short*)(void*)(MM_pool + (nextOpen + 2)) = prevFree;
+		std::cout << "\n\nvalue of 10 = " << (unsigned short)(MM_pool[(nextOpen+0)]) << "\n\n";
+		std::cout << "\n\nvalue of 16 = " << (unsigned short)(MM_pool[nextOpen+1]) << "\n\n";
+		std::cout << "\n\nvalue of 5 = " << (unsigned short)(MM_pool[nextOpen+2]) << "\n\n";
+		startOfAllocated = (void*)(MM_pool +( nextOpen + 3));
+
+		for (k = 0; k < 5000; k++)
+		{
+			if (k % 3 == 0)
+			{
+				std::cout << "\n";
+			}
+			if ((unsigned short)(MM_pool[k]) == totalUsed)
+			{
+				std::cout << "MM_pool[" << k << "] = " << (unsigned short)(MM_pool[k]) << "\t";
+				break;
+			}
+			std::cout << "MM_pool[" << k << "] = " << (unsigned short)(MM_pool[k]) << "\t";
+		}
 
 
 
@@ -87,74 +118,50 @@ namespace MemoryManager
 		unsigned short next = (unsigned short)MM_pool[1];
 		unsigned short prev = (unsigned short)MM_pool[2];
 		unsigned short count = used;
-		std::cout << "\n\nStart counting\n";
-		std::cout << "\nK: " << k;
-		std::cout << "\nUSE 6: " << used; //(unsigned short)(MM_pool+0);
-		std::cout << "\nCOUNT: " << count;
-		std::cout << "\nCOUNT/2: " << (int)((1.0*count) / 2);
-		std::cout << "\nNext: " << next;
+		//std::cout << "\n\nStart counting\n";
+		//std::cout << "\nK: " << k;
+		//std::cout << "\nUSE 6: " << used; 
+		//std::cout << "\nCOUNT: " << count;
+		//std::cout << "\nCOUNT/2: " << (int)((1.0*count) / 2);
+		//std::cout << "\nNext: " << next;
 
-		std::cout << "\n\n\n\t\tValue of 6 = " << next << "\n\n\n\n";
-
-		//for (k = 0; k < MM_POOL_SIZE; k++)
+		//for (k = 0; k < MM_POOL_SIZE / 500; k++)
 		//{
 		//	std::cout << (unsigned short)(MM_pool[k]);
-			
 		//}
 		
 		k = used;
 
-		std::cout << "mm at 8 = " << (unsigned short)MM_pool[8];
-		std::cout << "mm at 9 = " << (unsigned short)MM_pool[9];
-
 		while (k < MM_POOL_SIZE)
 		{
-			
+			/*
 			std::cout << "\nK: " << k;
 			std::cout << "\nUSE BEFORE: " << used;
 			std::cout << "\nCOUNT: " << count;
 			std::cout << "\nCOUNT/2: " << count/2;
 			std::cout << "\nNext: " << next;
+			*/
 			k += next;
-
+			count += used;
+			//std::cout << "\nCOUNT: " << count;
 
 			used = (unsigned short)MM_pool[(int)((1.0*count) / 2)];
+			
 			next = (unsigned short)MM_pool[(int)((1.0*count) / 2) + 1];
 			
-			std::cout << "\nK: " << k;
-			std::cout << "\nUSE AFTER: " << used;
-			
-			
-
-
-
-
-
-
-			/*
-			k += (int)next;
-			count += used;
-			used = (unsigned short)MM_pool[(int)(1.0*count) / 2];
-			std::cout << "\nUSE: " << used;
-			next = (unsigned short)MM_pool[((int)(1.0*count) / 2) + 1];
-			prev = (unsigned short)MM_pool[((int)(1.0*count) / 2) + 2];
-			*/
-
-
-
+			//std::cout << "\nK: " << k;
+			//std::cout << "\nUSE AFTER: " << used;
 			if (used == (unsigned short)((char)('o')))
 			{
+				count -= 6;
 				break;
 			}
-			count += used;
-			std::cout << "\nCOUNT: " << count;
+
+			
+			
 			
 		}
-		
-		
-
-
-
+		std::cout << "Free remaining = " << MM_POOL_SIZE - count << "\n";
 		return MM_POOL_SIZE-count;
 	}
 
