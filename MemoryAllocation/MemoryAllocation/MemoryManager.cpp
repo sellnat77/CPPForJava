@@ -125,18 +125,18 @@ namespace MemoryManager
 
 	void deallocate(void* aPointer)
 	{
-		
-
-
+		delete aPointer;
+		aPointer = 0;
 	}
 
 	int freeRemaining(void)
 	{
 		int position = 0;
 		int k = 0;
-		unsigned short used = (unsigned short)(MM_pool+position);
-		unsigned short next = (unsigned short)(MM_pool+(position+1));
-		unsigned short prev = (unsigned short)(MM_pool+(position+2));
+		unsigned short used = (unsigned short)(MM_pool[position]);
+		std::cout << "\nUSED = " << used;
+		unsigned short next = (unsigned short)(MM_pool[position+1]);
+		unsigned short prev = (unsigned short)(MM_pool[position+2]);
 		unsigned short count = used;
 		//std::cout << "\n\nStart counting\n";
 		//std::cout << "\nK: " << k;
@@ -154,7 +154,7 @@ namespace MemoryManager
 
 		while (k < MM_POOL_SIZE)
 		{
-			position = next / 2;
+			position = (int)(ceil((1.0*next) / 2));
 			/*
 			std::cout << "\nK: " << k;
 			std::cout << "\nUSE BEFORE: " << used;

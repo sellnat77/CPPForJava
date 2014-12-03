@@ -19,27 +19,29 @@ int main(void)
 	//std::cout << sizeof(long);
 	
 	int_pointer = (long*)allocate(sizeof(long)); //4
+	//int_pointer = (long*)allocate(20);
+	std::cout << "Free memory = " << freeRemaining() << std::endl;
+	
+	string_pointer = (char*)allocate(20); //255
+	std::cout << "size of string pointer" << sizeof(string_pointer);
 
 	std::cout << "Free memory = " << freeRemaining() << std::endl;
 	
-	string_pointer = (char*)allocate(255); //255
-
-	std::cout << "Free memory = " << freeRemaining() << std::endl;
-	/*
 	*int_pointer = 0xDEADBEEF;//too big
 
 	std::cout << "Free memory = " << freeRemaining() << std::endl;
 
 	strcpy(string_pointer, "It was the best of times, it was the worst of times"); //fine
+	std::cout << "size of string pointer" << string_pointer[0] << string_pointer[1] << string_pointer[2];
 
 	std::cout << "Free memory = " << freeRemaining() << std::endl;
-
-	deallocate(int_pointer);
+	
+	//deallocate(int_pointer);
 	std::cout << "Free memory = " << freeRemaining() << std::endl;
 
-	deallocate(string_pointer);
+	//deallocate(string_pointer);
 	std::cout << "Free memory = " << freeRemaining() << std::endl;
-	*/
+	
 
 }
 /*
