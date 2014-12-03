@@ -27,7 +27,7 @@ namespace MemoryManager
 		*(unsigned short*)(void*)(MM_pool + 0) = 6;//Total used	
 		*(unsigned short*)(void*)(MM_pool + 1) = 6;//Next free
 		*(unsigned short*)(void*)(MM_pool + 2) = 0;//Prev free
-		std::cout << "Value of 6 = " << (unsigned short)(MM_pool[0]) << "\n";
+		//std::cout << "Value of 6 = " << (unsigned short)(MM_pool[0]) << "\n";
 		/*
 		*(unsigned short*)(void*)(MM_pool + 3) = 10;//Total used
 		*(unsigned short*)(void*)(MM_pool + 4) = 16;//Next free
@@ -67,7 +67,7 @@ namespace MemoryManager
 
 		nextOpen = (unsigned short)((int)(1.0*(abs(MM_POOL_SIZE - freeRemaining())) / 2));
 		totalUsed = (unsigned short)(aSize + 6);
-		std::cout << "USING " << (unsigned short)totalUsed << "\n\n\n";
+		//std::cout << "USING " << (unsigned short)totalUsed << "\n\n\n";
 		//std::cout << "Being stored at " << nextOpen;
 		nextFree = (unsigned short)(totalUsed+(abs(MM_POOL_SIZE - freeRemaining())));
 		prevFree = (unsigned short)((abs(MM_POOL_SIZE - freeRemaining()) - 1));
@@ -125,8 +125,19 @@ namespace MemoryManager
 
 	void deallocate(void* aPointer)
 	{
-		delete aPointer;
-		aPointer = 0;
+		int k=0;
+		unsigned short count = 0;
+		char* point = (char*)aPointer;
+
+		while (k < MM_POOL_SIZE)
+		{
+			
+			count++;
+			k++;
+			//std::cout << "count is " << count << "\n\n";
+		}
+		std::cout << "count is " << count << "\n\n";
+
 	}
 
 	int freeRemaining(void)
@@ -134,7 +145,7 @@ namespace MemoryManager
 		int position = 0;
 		int k = 0;
 		unsigned short used = (unsigned short)(MM_pool[position]);
-		std::cout << "\nUSED = " << used;
+		//std::cout << "\nUSED = " << used;
 		unsigned short next = (unsigned short)(MM_pool[position+1]);
 		unsigned short prev = (unsigned short)(MM_pool[position+2]);
 		unsigned short count = used;
@@ -179,7 +190,7 @@ namespace MemoryManager
 			}			
 			
 		}
-		std::cout << "Used = " << abs(MM_POOL_SIZE-MM_POOL_SIZE-count) << "\n";
+		//std::cout << "Used = " << abs(MM_POOL_SIZE-MM_POOL_SIZE-count) << "\n";
 		return MM_POOL_SIZE-count;
 	}
 
