@@ -68,7 +68,7 @@ namespace MemoryManager
 		int k;
 
 		//nextOpen += (unsigned short)((int)(1.0*(abs(MM_POOL_SIZE - freeRemaining())))+(aSize-6));
-		nextOpen += abs(freeRemaining()-MM_POOL_SIZE);
+		nextOpen += abs(freeRemaining()-MM_POOL_SIZE)-(;
 		std::cout << "Next available spot" << nextOpen << "\n\n";
 		totalUsed = (unsigned short)(aSize + 6);
 		//std::cout << "USING " << (unsigned short)totalUsed << "\n\n\n";
