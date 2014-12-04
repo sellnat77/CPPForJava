@@ -81,7 +81,7 @@
     <ClInclude Include="MemoryManager.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="driver.cpp" />
     <ClCompile Include="MemoryManager.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

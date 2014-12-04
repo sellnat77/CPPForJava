@@ -27,6 +27,7 @@ namespace MemoryManager
 		*(unsigned short*)(void*)(MM_pool + 0) = 6;//Total used	
 		*(unsigned short*)(void*)(MM_pool + 1) = 6;//Next free
 		*(unsigned short*)(void*)(MM_pool + 2) = 0;//Prev free
+
 		//std::cout << "Value of 6 = " << (unsigned short)(MM_pool[0]) << "\n";
 		/*
 		*(unsigned short*)(void*)(MM_pool + 3) = 10;//Total used
@@ -61,11 +62,14 @@ namespace MemoryManager
 		unsigned short totalUsed;
 		unsigned short nextFree;
 		unsigned short prevFree;
-		unsigned short nextOpen;
+		static int nextOpen;
+		
 		unsigned short temp;
 		int k;
 
-		nextOpen = (unsigned short)((int)(1.0*(abs(MM_POOL_SIZE - freeRemaining())) / 2));
+		//nextOpen += (unsigned short)((int)(1.0*(abs(MM_POOL_SIZE - freeRemaining())))+(aSize-6));
+		nextOpen += abs(freeRemaining()-MM_POOL_SIZE);
+		std::cout << "Next available spot" << nextOpen << "\n\n";
 		totalUsed = (unsigned short)(aSize + 6);
 		//std::cout << "USING " << (unsigned short)totalUsed << "\n\n\n";
 		//std::cout << "Being stored at " << nextOpen;
@@ -204,6 +208,19 @@ namespace MemoryManager
 		return 0;
 	}
 
+	void print()
+	{
+		int k; 
+
+		for (k = 0; k < 500; k++)
+		{
+			if (k % 5 == 0)
+			{
+				std::cout << "\n";
+			}
+			std::cout << "[" << k << "] = " << (unsigned short)(MM_pool[k]);
+		}
+	}
 
 
 	//Call if a pointer is over run condition is detected

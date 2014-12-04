@@ -23,7 +23,7 @@
     <ClCompile Include="MemoryManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="driver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
