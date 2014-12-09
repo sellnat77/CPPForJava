@@ -8,7 +8,7 @@
 
 	namespace MemoryManager
 	{
-		const int MM_POOL_SIZE = 65536; //65536
+		const int MM_POOL_SIZE = 65535; //65536
 		char* MM_pool = new char[MM_POOL_SIZE];
 
 		void initializeMemoryManager(void)
@@ -75,7 +75,17 @@
 			*(unsigned short*)(void*)(MM_pool + nextOpen) = totalUsed;
 			temp = *(unsigned short*)(MM_pool + nextOpen);
 			//std::cout << "\n\n\n\n\t" << temp;
-			*(unsigned short*)(void*)(MM_pool + nextOpen + 1) = nextFree;
+			std::cout << "\n\nNext free = " << nextFree << " Being stored at: " << (nextOpen+1);
+			if (nextFree == 136)
+			{
+				*(unsigned short*)(void*)(MM_pool+64) = (unsigned short)136;
+			}
+			else
+			{
+				*(unsigned short*)(void*)(MM_pool + nextOpen + 1) = (unsigned short)nextFree;
+			}
+			
+			std::cout << "\n\nNext free = " << nextFree << " Being stored at: " << (nextOpen + 1);
 			*(unsigned short*)(void*)(MM_pool + nextOpen + 2) = prevFree;
 			startOfAllocated = (MM_pool + nextOpen + 3);
 
@@ -114,7 +124,7 @@
 				//	std::cout << "MM_pool[" << k << "] = " << (unsigned short)(MM_pool[k]) << "\t";
 				//	break;
 				//}
-				std::cout << "MM_pool[" << k << "] = " << (unsigned short)(MM_pool[k]) << "\t";
+				std::cout << "MM_pool[" << k << "] = " << (unsigned short)(MM_pool[0+k]) << "\t";
 			}
 
 

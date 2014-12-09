@@ -13,8 +13,8 @@ int main(void)
 	std::cout << "Initialize uses 6 bytes...expecting 65530\n";
 	initializeMemoryManager();
 
-	long* int_pointer;
-	char* string_pointer;
+	//long* int_pointer;
+	//char* string_pointer;
 	/*
 	std::cout << "Free memory = " << freeRemaining() << "\n\n";
 	//std::cout << sizeof(long);
@@ -52,7 +52,7 @@ int main(void)
 	int i;
 
 	// 10 points if this part of the program works - this for loop
-	for (i = 1; i<15; i++)
+	for (i = 1; i<16; i++)
 	{
 		iptr[i] = (int*)allocate(sizeof(int));
 		std::cout << "Allocation #" << i << "Free mem = " << freeRemaining() << std::endl;
