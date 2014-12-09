@@ -16,8 +16,6 @@ namespace MemoryManager
 
 	int smallestFree(void);
 
-	void print();
-
 	void onOutMemory(void);
 	void onOverrunDetected(void);
 
