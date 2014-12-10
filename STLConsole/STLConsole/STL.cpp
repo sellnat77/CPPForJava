@@ -1,5 +1,6 @@
 /* Russell Tan
  * 011529945
+ * STL Console Project
  * C++ For Java Programmers
  * Professor Gold
  * 12/09/2014
